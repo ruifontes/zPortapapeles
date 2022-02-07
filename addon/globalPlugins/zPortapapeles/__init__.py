@@ -24,7 +24,7 @@ from NVDAObjects.UIA import UIA
 # Temporary: test for suggestions list until NVDA 2021.3 requirement is in effect.
 import NVDAObjects.UIA
 import time
-import winsound
+import nvwave
 import wx
 from threading import Thread
 import os
@@ -37,7 +37,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def __init__(self, *args, **kwargs):
 		super(GlobalPlugin, self).__init__(*args, **kwargs)
 
-		if globalVars.appArgs.secure or config.isAppX: return
+		if globalVars.appArgs.secure or config.isAppX: raise RuntimeError(_("ZPortapapeles no se puede usar en escritorios seguros") )
 
 		ajustes.setup()
 		NVDASettingsDialog.categoryClasses.append(PortapapelesPanel)
@@ -76,7 +76,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		#Función para capturar la combinación de teclas pulsada y reproducir el audio correspondiente
 		fichero = os.path.join(os.path.dirname(__file__), "Sonidos", ajustes.soundsDict.get(ajustes.messagesDict["+".join(event.modifierNames)+"+"+event.mainKeyName]))
 		if os.path.exists(fichero):
-			winsound.PlaySound(fichero, winsound.SND_ASYNC)
+			nvwave.playWaveFile(fichero)
 		return
 
 	def script_gestos(self,gesture):

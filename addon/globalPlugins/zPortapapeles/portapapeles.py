@@ -5,7 +5,7 @@
 import api
 import ui
 import wx
-import winsound
+import nvwave
 from tones import beep
 from threading import Thread, Lock
 from time import sleep
@@ -129,7 +129,7 @@ class ClipMonitor(Thread):
 											wx.CallAfter(self.onTalk)
 										if ajustes.sndHistorial: # Si tenemos True sonido
 											if os.path.exists(self.fichero):
-												winsound.PlaySound(self.fichero, winsound.SND_ASYNC)
+												nvwave.playWaveFile(self.fichero)
 											else:
 												beep(1000,50)
 							else: # La lista si tiene entradas
@@ -146,7 +146,7 @@ class ClipMonitor(Thread):
 											self.__historial.insert(0, clip)
 											if ajustes.sndHistorial: # Si tenemos True sonido
 												if os.path.exists(self.fichero):
-													winsound.PlaySound(self.fichero, winsound.SND_ASYNC)
+													nvwave.playWaveFile(self.fichero)
 												else:
 													beep(1000,50)
 						else:
