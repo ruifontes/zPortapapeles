@@ -14,6 +14,27 @@ import ctypes
 from ctypes.wintypes import BOOL, HWND, HANDLE, HGLOBAL, UINT, LPVOID
 from ctypes import c_size_t as SIZE_T
 from . import ajustes
+from typing import (Any, Callable, Dict, List, Iterable, Tuple)  # need 'pip install typing' for 
+class ClipboardFormat:
+    CF_TEXT = 1
+    CF_BITMAP = 2
+    CF_METAFILEPICT = 3
+    CF_SYLK = 4
+    CF_DIF = 5
+    CF_TIFF = 6
+    CF_OEMTEXT = 7
+    CF_DIB = 8
+    CF_PALETTE = 9
+    CF_PENDATA = 10
+    CF_RIFF = 11
+    CF_WAVE = 12
+    CF_UNICODETEXT = 13
+    CF_ENHMETAFILE = 14
+    CF_HDROP = 15
+    CF_LOCALE = 16
+    CF_DIBV5 = 17
+    CF_MAX = 18
+    CF_HTML = ctypes.windll.user32.RegisterClipboardFormatW("HTML Format")
 
 # Solución extraida de https://stackoverflow.com/questions/579687/how-do-i-copy-a-string-to-the-clipboard
 # Me gusta más esta forma que la interna de NVDA o la de wxpython para manejar el portapapeles, es mas directa con el sistema.
@@ -84,6 +105,37 @@ def put(text):
 	GlobalUnlock(handle)
 	SetClipboardData(CF_UNICODETEXT, handle)
 	CloseClipboard()
+
+def GetDictKeyName(theDict: Dict, theValue: Any, start: str = None) -> str:
+	for key, value in theDict.items():
+		if theValue == value and ((start and key.startswith(start)) or True):
+			return key
+	return ''
+
+def detect() -> Dict[int, str]:
+	formats = {}
+	if OpenClipboard(None):
+		formatType = 0
+		arrayType = ctypes.c_wchar * 64
+		while True:
+			formatType = ctypes.windll.user32.EnumClipboardFormats(formatType)
+			if formatType == 0:
+				break
+			values = arrayType()
+			ctypes.windll.user32.GetClipboardFormatNameW(formatType, values, len(values))
+			formatName = values.value
+			if not formatName:
+				formatName = GetDictKeyName(ClipboardFormat.__dict__, formatType, 'CF_')
+			formats[formatType] = formatName
+		CloseClipboard()
+	if len(formats) == 0:
+		return False
+	else:
+#		return formats
+		if 'CF_UNICODETEXT' in formats.values():
+			return True
+		else:
+			return False
 
 def talk(text):
 	# Función para mandar mensaje de lo copiado fuera del hilo de tiempo

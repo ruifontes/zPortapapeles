@@ -55,8 +55,31 @@ El historial de portapapeles de Windows puede tener entradas duplicadas si usamo
 ## Agradecimientos
 
 * Javi Domínguez: Por su ayuda desinteresada y por contribuir con la función de monitoreo del portapapeles.
+* Portugués Brasil: pedro-hdias
+* Ruso: Valentin Kupriyanov
+* Turco: Umut KORKMAZ
 
 # Registro de cambios.
+## Versión 0.3.
+
+* Agregado detección si hay texto seleccionado al copiar.
+
+Ahora el complemento cuando demos a copiar si no detecta texto nos informara con un mensaje.
+
+* Agregado el poder desactivar y activar rápidamente las funciones del complemento respecto al portapapeles.
+
+En gestos de entrada podremos configurar una combinación para activar y desactivar rápidamente lo referido al portapapeles.
+
+Cuando lo desactivemos el portapapeles y los mensajes serán los nativos de Windows junto a los mensajes que NVDA tenga predefinidos para el portapapeles.
+
+Esto no afectara al historial que si esta activo seguirá activo.
+
+* Agregado compatibilidad con teclados que usen caracteres cirílicos.
+
+Se soluciono un problema en distribuciones de teclado que usan caracteres cirílicos.
+
+* Agregados idiomas Ruso, Turco y Portugués Brasil.
+
 ## Versión 0.2.
 
 * Cambiadas todas las funciones del portapapeles a cTypes

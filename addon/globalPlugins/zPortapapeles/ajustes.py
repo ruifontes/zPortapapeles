@@ -19,6 +19,8 @@ messagesDict = {
 	# Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
 	"control+v":_("Pegar"),
 	# Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
+	"control+y":_("Rehacer"),
+	# Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
 	"control+z":_("Deshacer")
 }
 
@@ -27,6 +29,7 @@ soundsDict = {
 	_("Cortar"):"cortar.wav",
 	_("Pegar"):"pegar.wav",
 	_("Seleccionar todo"):"todo.wav",
+	_("Rehacer"):"rehacer.wav",
 	_("Deshacer"):"desacer.wav",
 }
 
@@ -61,6 +64,7 @@ historial = None
 tiempo = None
 sndHistorial = None
 talkPaste = None
+isActivo = None
 winOn = False
 
 def initConfiguration():
@@ -71,6 +75,7 @@ def initConfiguration():
 		"tiempo": "integer(default=1, min=0, max=5)",
 		"sonidoHistorial": "boolean(default=False)",
 		"vozCopiado": "boolean(default=False)",
+		"activado": "boolean(default=True)",
 	}
 	config.conf.spec['zPortapapeles'] = confspec
 
@@ -85,7 +90,7 @@ def setConfig(key, value):
 		config.conf["zPortapapeles"][key] = value
 
 def setup():
-	global voz, audio, historial, tiempo, sndHistorial, talkPaste
+	global voz, audio, historial, tiempo, sndHistorial, talkPaste, isActivo
 	initConfiguration()
 	voz = getConfig("voz")
 	audio = getConfig("audio")
@@ -93,3 +98,4 @@ def setup():
 	tiempo = getConfig("tiempo")
 	sndHistorial = getConfig("sonidoHistorial")
 	talkPaste = getConfig("vozCopiado")
+	isActivo = getConfig("activado")

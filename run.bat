@@ -2,4 +2,4 @@
 @echo off
 scons --clean
 scons
-zPortapapeles-0.2.nvda-addon
+zPortapapeles-0.3.nvda-addon

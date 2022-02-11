@@ -14,11 +14,13 @@ import inputCore
 import scriptHandler
 import globalVars
 import config
+import textInfos
 from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
 from gui import guiHelper, nvdaControls
 import speech
 import watchdog
 import core
+from tones import beep
 from keyboardHandler import KeyboardInputGesture
 from NVDAObjects.UIA import UIA
 # Temporary: test for suggestions list until NVDA 2021.3 requirement is in effect.
@@ -79,14 +81,44 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			nvwave.playWaveFile(fichero)
 		return
 
+	def textSpy(self, obj):
+		# Inicio código obtenido de Buscador de definiciones de la RAE (DLEChecker) de Antonio Cascales
+		if hasattr(obj.treeInterceptor, 'TextInfo') and not obj.treeInterceptor.passThrough:
+			try:
+				info = obj.treeInterceptor.makeTextInfo(textInfos.POSITION_SELECTION)
+			except (RuntimeError, NotImplementedError):
+				info = None
+
+			if not info or info.isCollapsed:
+				return False
+			else:
+				selectedText = info.text
+#				return True
+		else:
+			try:
+				selectedText = obj.selection.text
+#				return True
+			except (RuntimeError, NotImplementedError):
+				return False
+			if obj.selection.text == "":
+				return False
+		if selectedText == "":
+			return False
+		else:
+			return True
+		# Fin código obtenido de Buscador de definiciones de la RAE (DLEChecker) de Antonio Cascales
+
 	def script_gestos(self,gesture):
 		# Función que simulara la tecla pulsada y actuara ofreciendo la información que el usuario eligiese en opciones
 		obj = api.getFocusObject()
 
 		gesture.send()
 
+		formatoPortapapeles = pt.detect()
+
 		if not obj:
 			return 
+
 		if obj.windowClassName == 'ConsoleWindowClass':
 			return
 
@@ -100,6 +132,32 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if treeInterceptor and treeInterceptor.isReady:
 			func = scriptHandler._getObjScript(treeInterceptor, gesture, globalMapScripts)
 			if func and (not treeInterceptor.passThrough or getattr(func,"ignoreTreeInterceptorPassThrough",False)):
+
+				if not ajustes.isActivo:
+					func(treeInterceptor)
+					return
+
+				if ajustes.voz:
+					if formatoPortapapeles:
+						if ajustes.messagesDict["+".join(gesture.modifierNames)+"+"+gesture.mainKeyName] == _("Copiar"):
+							if self.textSpy(obj):
+								speech.setSpeechMode(0)
+								func(treeInterceptor)
+								speech.setSpeechMode(self.old)
+								if ajustes.audio == True:
+									self.audioOn(gesture)
+								return
+							else: # Sin nada seleccionado
+								ui.message(_("Sin selección"))
+								if ajustes.audio == True:
+									self.audioOn(gesture)
+								return
+					else:
+						func(treeInterceptor)
+						if ajustes.audio == True:
+							self.audioOn(gesture)
+						return
+
 				if ajustes.voz == False:
 					speech.setSpeechMode(0)
 				func(treeInterceptor)
@@ -109,8 +167,30 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				if ajustes.audio == True:
 					self.audioOn(gesture)
 
-		if ajustes.voz == True:
-			ui.message(ajustes.messagesDict["+".join(gesture.modifierNames)+"+"+gesture.mainKeyName])
+		if not ajustes.isActivo:
+			return
+
+		if ajustes.voz:
+			if formatoPortapapeles:
+				if ajustes.messagesDict["+".join(gesture.modifierNames)+"+"+gesture.mainKeyName] == _("Copiar"):
+					if self.textSpy(obj):
+						ui.message(ajustes.messagesDict["+".join(gesture.modifierNames)+"+"+gesture.mainKeyName])
+						if ajustes.audio == True:
+							self.audioOn(gesture)
+						return
+					else: # Sin nada seleccionado
+						ui.message(_("Sin selección"))
+						return
+				else: # Otra combinación de teclas
+					ui.message(ajustes.messagesDict["+".join(gesture.modifierNames)+"+"+gesture.mainKeyName])
+					if ajustes.audio == True:
+						self.audioOn(gesture)
+					return
+			else: # Otro formato fuera de texto
+				ui.message(ajustes.messagesDict["+".join(gesture.modifierNames)+"+"+gesture.mainKeyName])
+				if ajustes.audio == True:
+					self.audioOn(gesture)
+				return
 
 		if ajustes.audio == True:
 			self.audioOn(gesture)
@@ -146,6 +226,22 @@ Si desea usarlo, actívelo desde las opciones de NVDA en Opciones de zPortapapel
 			ui.message(msg)
 
 	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+	@scriptHandler.script(gesture=None, description= _("Activar o desactivar las propiedades de zPortapapeles"),
+		# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
+		category= _("zPortapapeles"))
+	def script_power(self, event):
+		if ajustes.isActivo:
+			ajustes.setConfig("activado", False)
+			ajustes.isActivo = False
+			ui.message(_("zPortapapeles desactivado"))
+			beep(100,150)
+		else:
+			ajustes.setConfig("activado", True)
+			ajustes.isActivo = True
+			ui.message(_("zPortapapeles activado"))
+			beep(400,150)
+
+	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 	script_gestos.__doc__ = _("Teclas predefinidas del portapapeles (cambiar solo en distribuciones de portapapeles distinto)")
 	# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
 	script_gestos.category = _("zPortapapeles")
@@ -155,6 +251,7 @@ Si desea usarlo, actívelo desde las opciones de NVDA en Opciones de zPortapapel
 		"kb:Control+e": "gestos",
 		"kb:Control+v": "gestos",
 		"kb:Control+x": "gestos",
+		"kb:Control+y": "gestos",
 		"kb:Control+z": "gestos",
 	}
 
@@ -386,7 +483,11 @@ class HistorialDialogo(wx.Dialog):
 			if ajustes.voz:
 				# Translators: Mensaje informativo de pegado al foco
 				ui.message(_("Pegado al foco."))
-			KeyboardInputGesture.fromName("Control+v").send()
+			try:
+				KeyboardInputGesture.fromName("Control+v").send()
+			except:
+				# Solución para teclados con caracteres cirilicos.
+				KeyboardInputGesture.fromName("shift+insert").send()
 
 		try:
 			core.callLater(300, lambda: self.SetClipboardTextTime(clipboardBackup))
