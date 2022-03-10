@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: zPano 0.2\n"
-"POT-Creation-Date: 2022-02-09 13:21+0300\n"
-"PO-Revision-Date: 2022-02-09 13:58+0300\n"
+"Project-Id-Version: zPano 0.3\n"
+"POT-Creation-Date: 2022-02-12 21:51+0300\n"
+"PO-Revision-Date: 2022-02-12 21:56+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -11,28 +11,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
-"X-Poedit-Basepath: ../AppData/Roaming/nvda/addons/zPortapapeles/"
-"globalPlugins\n"
+"X-Poedit-Basepath: ../../../globalPlugins\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
 
-#: zPortapapeles/__init__.py:40
+#: zPortapapeles/__init__.py:42
 msgid "ZPortapapeles no se puede usar en escritorios seguros"
 msgstr "zPano, güvenli masaüstlerinde kullanılamaz"
 
-#: zPortapapeles/__init__.py:119
+#: zPortapapeles/__init__.py:142 zPortapapeles/__init__.py:175
+#: zPortapapeles/ajustes.py:18 zPortapapeles/ajustes.py:28
+msgid "Copiar"
+msgstr "kopyala"
+
+#: zPortapapeles/__init__.py:151 zPortapapeles/__init__.py:182
+msgid "Sin selección"
+msgstr "seçim yok"
+
+#: zPortapapeles/__init__.py:199
 msgid "Muestra la ventana de historial del portapapeles"
 msgstr "Pano geçmişi penceresini göster"
 
-#: zPortapapeles/__init__.py:121 zPortapapeles/__init__.py:151
+#: zPortapapeles/__init__.py:201 zPortapapeles/__init__.py:231
+#: zPortapapeles/__init__.py:247
 msgid "zPortapapeles"
 msgstr "zPano"
 
-#: zPortapapeles/__init__.py:128
+#: zPortapapeles/__init__.py:208
 msgid "No hay nada en el historial de zPortapapeles."
 msgstr "zPano geçmişi boş."
 
-#: zPortapapeles/__init__.py:136
+#: zPortapapeles/__init__.py:216
 msgid ""
 "Ya hay una ventana del historial abierta.\n"
 "\n"
@@ -42,7 +52,7 @@ msgstr ""
 "\n"
 "Aynı anda iki pencere açılamaz."
 
-#: zPortapapeles/__init__.py:143
+#: zPortapapeles/__init__.py:223
 msgid ""
 "El historial del portapapeles no está activado.\n"
 "\n"
@@ -54,110 +64,125 @@ msgstr ""
 "Etkinleştirmek isterseniz: NVDA>Tercihler>Ayarlar penceresinde, zPano "
 "Seçenekleri'ne gidebilirsiniz."
 
-#: zPortapapeles/__init__.py:149
+#: zPortapapeles/__init__.py:229
+#| msgid "Activar o desactivar sonidos del portapapeles"
+msgid "Activar o desactivar las propiedades de zPortapapeles"
+msgstr "zPano özelliklerini aç veya kapat"
+
+#: zPortapapeles/__init__.py:236
+#| msgid "zPortapapeles"
+msgid "zPortapapeles desactivado"
+msgstr "zPano kapalı"
+
+#: zPortapapeles/__init__.py:241
+#| msgid "zPortapapeles"
+msgid "zPortapapeles activado"
+msgstr "zPano açık"
+
+#: zPortapapeles/__init__.py:245
 msgid ""
 "Teclas predefinidas del portapapeles (cambiar solo en distribuciones de "
 "portapapeles distinto)"
-msgstr ""
-"Varsayılan pano tuşları (yalnızca farklı pano düzenlerinde değişir)"
+msgstr "Varsayılan pano tuşları (yalnızca farklı pano düzenlerinde değişir)"
 
-#: zPortapapeles/__init__.py:164
+#: zPortapapeles/__init__.py:261
 msgid "Opciones de zPortapapeles"
 msgstr "zPano Seçenekleri"
 
-#: zPortapapeles/__init__.py:171
+#: zPortapapeles/__init__.py:268
 msgid "Activar o desactivar anuncios hablados del portapapeles"
 msgstr "Pano için mesajları bildir."
 
-#: zPortapapeles/__init__.py:174
+#: zPortapapeles/__init__.py:271
 msgid "Activar o desactivar sonidos del portapapeles"
 msgstr "Pano işlemlerinde ses çal."
 
-#: zPortapapeles/__init__.py:177
+#: zPortapapeles/__init__.py:274
 msgid "Activar o desactivar el historial del portapapeles"
 msgstr "Pano geçmişini aç."
 
-#: zPortapapeles/__init__.py:181
+#: zPortapapeles/__init__.py:278
 msgid "Elija un tiempo para actualizar el monitor del portapapeles"
 msgstr "Pano monitörünü yenilemek için bir zaman seç:"
 
-#: zPortapapeles/__init__.py:183
+#: zPortapapeles/__init__.py:280
 msgid "Notificar con un sonido cada vez que se agregue algo al historial"
 msgstr "Geçmişe bir şey eklendiğinde Ses çal."
 
-#: zPortapapeles/__init__.py:186
+#: zPortapapeles/__init__.py:283
 msgid "Hablar lo copiado al portapapeles y agregado al Historial"
 msgstr "Panoya kopyalananları ve Geçmiş'e eklenenleri bildir."
 
-#: zPortapapeles/__init__.py:270
+#: zPortapapeles/__init__.py:367
 msgid "Historial del Portapapeles"
 msgstr "Pano Geçmişi"
 
-#: zPortapapeles/__init__.py:279
+#: zPortapapeles/__init__.py:376
 msgid "&Historial:"
 msgstr "&Geçmiş:"
 
-#: zPortapapeles/__init__.py:290
+#: zPortapapeles/__init__.py:387
 msgid "&Borrar"
 msgstr "&Sil"
 
-#: zPortapapeles/__init__.py:294
+#: zPortapapeles/__init__.py:391
 msgid "Borrar &todo"
 msgstr "&Tümünü Sil"
 
-#: zPortapapeles/__init__.py:298
+#: zPortapapeles/__init__.py:395
 msgid "&Refrescar"
 msgstr "&Yenile"
 
-#: zPortapapeles/__init__.py:302
+#: zPortapapeles/__init__.py:399
 msgid "&Cerrar"
 msgstr "&Kapat"
 
-#: zPortapapeles/__init__.py:388
+#: zPortapapeles/__init__.py:485
 msgid "Pegado al foco."
 msgstr "Odaklanmış."
 
 #: zPortapapeles/ajustes.py:12 zPortapapeles/ajustes.py:14
-#: zPortapapeles/ajustes.py:29
+#: zPortapapeles/ajustes.py:31
 msgid "Seleccionar todo"
 msgstr "Tümünü Seç"
 
-#: zPortapapeles/ajustes.py:16 zPortapapeles/ajustes.py:27
+#: zPortapapeles/ajustes.py:16 zPortapapeles/ajustes.py:29
 msgid "Cortar"
 msgstr "Kes"
 
-#: zPortapapeles/ajustes.py:18 zPortapapeles/ajustes.py:26
-msgid "Copiar"
-msgstr "kopyala"
-
-#: zPortapapeles/ajustes.py:20 zPortapapeles/ajustes.py:28
+#: zPortapapeles/ajustes.py:20 zPortapapeles/ajustes.py:30
 msgid "Pegar"
 msgstr "Yapıştır"
 
-#: zPortapapeles/ajustes.py:22 zPortapapeles/ajustes.py:30
+#: zPortapapeles/ajustes.py:22 zPortapapeles/ajustes.py:32
+#| msgid "Deshacer"
+msgid "Rehacer"
+msgstr "yinele"
+
+#: zPortapapeles/ajustes.py:24 zPortapapeles/ajustes.py:33
 msgid "Deshacer"
 msgstr "Geri al"
 
-#: zPortapapeles/ajustes.py:44
+#: zPortapapeles/ajustes.py:47
 msgid "1 décima de segundo"
 msgstr "1 saniyenin onda biri"
 
-#: zPortapapeles/ajustes.py:46
+#: zPortapapeles/ajustes.py:49
 msgid "2 décimas de segundo"
 msgstr "2 saniyenin onda biri"
 
-#: zPortapapeles/ajustes.py:48
+#: zPortapapeles/ajustes.py:51
 msgid "3 décimas de segundo"
 msgstr "3 saniyenin onda biri"
 
-#: zPortapapeles/ajustes.py:50
+#: zPortapapeles/ajustes.py:53
 msgid "4 décimas de segundo"
 msgstr "4 saniyenin onda biri"
 
-#: zPortapapeles/ajustes.py:52
+#: zPortapapeles/ajustes.py:55
 msgid "5 décimas de segundo"
 msgstr "5 saniyenin onda biri"
 
-#: zPortapapeles/ajustes.py:54
+#: zPortapapeles/ajustes.py:57
 msgid "1 segundo"
 msgstr "1 saniye"

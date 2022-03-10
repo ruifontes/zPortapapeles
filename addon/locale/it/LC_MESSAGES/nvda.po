@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the 'zPortapapeles' package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 'zPortapapeles' '0.3'\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2022-02-11 22:28+0100\n"
+"PO-Revision-Date: 2022-02-14 20:26+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: Alessio Lenzi <lenzone10@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#. Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
+#: buildVars.py:23 addon\globalPlugins\zPortapapeles\__init__.py:201
+#: addon\globalPlugins\zPortapapeles\__init__.py:231
+#: addon\globalPlugins\zPortapapeles\__init__.py:247
+msgid "zPortapapeles"
+msgstr "zAppunti"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid "Utilidades para el portapapeles, anuncio de las teclas e historial."
+msgstr ""
+"Utilità per gli appunti di windows, annuncio dei tasti premuti e cronologia."
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:42
+msgid "ZPortapapeles no se puede usar en escritorios seguros"
+msgstr "ZAppunti non può essere utilizzato su desktop sicuro"
+
+#. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
+#: addon\globalPlugins\zPortapapeles\__init__.py:142
+#: addon\globalPlugins\zPortapapeles\__init__.py:175
+#: addon\globalPlugins\zPortapapeles\ajustes.py:18
+#: addon\globalPlugins\zPortapapeles\ajustes.py:28
+msgid "Copiar"
+msgstr "Copiato"
+
+#. Sin nada seleccionado
+#: addon\globalPlugins\zPortapapeles\__init__.py:151
+#: addon\globalPlugins\zPortapapeles\__init__.py:182
+msgid "Sin selección"
+msgstr "Nessuna selezione"
+
+#. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+#: addon\globalPlugins\zPortapapeles\__init__.py:199
+msgid "Muestra la ventana de historial del portapapeles"
+msgstr "Mostra la finestra della cronologia degli appunti"
+
+#. Translators: Mensaje informativo de que el historial se encuentra vacío
+#: addon\globalPlugins\zPortapapeles\__init__.py:208
+msgid "No hay nada en el historial de zPortapapeles."
+msgstr "La cronologia di zAppunti non contiene voci."
+
+#. Translators: Mensaje informativo el cual le dice al usuario que no es posible abrir 2 ventanas del historial a la vez
+#: addon\globalPlugins\zPortapapeles\__init__.py:216
+msgid ""
+"Ya hay una ventana del historial abierta.\n"
+"\n"
+"No es posible tener dos ventanas a la vez."
+msgstr ""
+"C'è già una finestra della cronologia aperta.\n"
+"\n"
+"Non è possibile avere due finestre aperte contemporaneamente."
+
+#. Translators: Mensaje informativo que le indica al usuario que el historial no esta activado y como proceder si desea usarlo
+#: addon\globalPlugins\zPortapapeles\__init__.py:223
+msgid ""
+"El historial del portapapeles no está activado.\n"
+"\n"
+"Si desea usarlo, actívelo desde las opciones de NVDA en Opciones de "
+"zPortapapeles."
+msgstr ""
+"La cronologia degli appunti non è abilitata.\n"
+"\n"
+"Se vuoi utilizzarla, abilitala dalle opzioni NVDA in Opzioni di zAppunti."
+
+#. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+#: addon\globalPlugins\zPortapapeles\__init__.py:229
+msgid "Activar o desactivar las propiedades de zPortapapeles"
+msgstr "Visualizza o nascondi la finestra  proprietà di zAppunti"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:236
+msgid "zPortapapeles desactivado"
+msgstr "zAppunti disattivato"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:241
+msgid "zPortapapeles activado"
+msgstr "zAppunti attivato"
+
+#. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+#: addon\globalPlugins\zPortapapeles\__init__.py:245
+msgid ""
+"Teclas predefinidas del portapapeles (cambiar solo en distribuciones de "
+"portapapeles distinto)"
+msgstr ""
+"Tasti predefiniti per gli appunti (modificarli solo per layout di tastiera "
+"differenti)"
+
+#. Translators: Titulo del panel del complemento en el dialogo de opciones de NVDA
+#: addon\globalPlugins\zPortapapeles\__init__.py:261
+msgid "Opciones de zPortapapeles"
+msgstr "Opzioni di zAppunti"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:268
+msgid "Activar o desactivar anuncios hablados del portapapeles"
+msgstr "Attiva o disattiva gli annunci vocali per gli appunti"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:271
+msgid "Activar o desactivar sonidos del portapapeles"
+msgstr "Attiva o disattiva i suoni per gli appunti"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:274
+msgid "Activar o desactivar el historial del portapapeles"
+msgstr "Attiva o disattiva la cronologia degli appunti"
+
+#. Translators: Descripción de la etiqueta del choice de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:278
+msgid "Elija un tiempo para actualizar el monitor del portapapeles"
+msgstr "Scegli il tempo per l'aggiornamento del monitoraggio degli appunti"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:280
+msgid "Notificar con un sonido cada vez que se agregue algo al historial"
+msgstr ""
+"Avvisa con un suono ogni volta che si aggiunge qualcosa alla cronologia"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:283
+msgid "Hablar lo copiado al portapapeles y agregado al Historial"
+msgstr ""
+"Annuncia ciò che è stato copiato negli appunti e aggiunto alla cronologia"
+
+#. Translators: Titulo de la ventana de dialogo del Historial
+#: addon\globalPlugins\zPortapapeles\__init__.py:367
+msgid "Historial del Portapapeles"
+msgstr "Cronologia degli Appunti"
+
+#. Translators: Etiqueta para el listbox con atajo de tecla Alt+H
+#: addon\globalPlugins\zPortapapeles\__init__.py:376
+msgid "&Historial:"
+msgstr "&Riepilogo:"
+
+#. Translators: Nombre del botón con tecla de atajo Alt+B
+#: addon\globalPlugins\zPortapapeles\__init__.py:387
+msgid "&Borrar"
+msgstr "&Elimina"
+
+#. Translators: Nombre del botón con tecla de atajo Alt+T
+#: addon\globalPlugins\zPortapapeles\__init__.py:391
+msgid "Borrar &todo"
+msgstr "Elimina &tutto"
+
+#. Translators: Nombre del botón con tecla de atajo Alt+R
+#: addon\globalPlugins\zPortapapeles\__init__.py:395
+msgid "&Refrescar"
+msgstr "&Aggiorna"
+
+#. Translators: Nombre del botón con tecla de atajo Alt+C
+#: addon\globalPlugins\zPortapapeles\__init__.py:399
+msgid "&Cerrar"
+msgstr "&Chiudi"
+
+#. Translators: Mensaje informativo de pegado al foco
+#: addon\globalPlugins\zPortapapeles\__init__.py:485
+msgid "Pegado al foco."
+msgstr "Incollato nel focus."
+
+#. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
+#: addon\globalPlugins\zPortapapeles\ajustes.py:12
+#: addon\globalPlugins\zPortapapeles\ajustes.py:14
+#: addon\globalPlugins\zPortapapeles\ajustes.py:31
+msgid "Seleccionar todo"
+msgstr "Seleziona tutto"
+
+#. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
+#: addon\globalPlugins\zPortapapeles\ajustes.py:16
+#: addon\globalPlugins\zPortapapeles\ajustes.py:29
+msgid "Cortar"
+msgstr "Tagliato"
+
+#. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
+#: addon\globalPlugins\zPortapapeles\ajustes.py:20
+#: addon\globalPlugins\zPortapapeles\ajustes.py:30
+msgid "Pegar"
+msgstr "Incollato"
+
+#. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
+#: addon\globalPlugins\zPortapapeles\ajustes.py:22
+#: addon\globalPlugins\zPortapapeles\ajustes.py:32
+msgid "Rehacer"
+msgstr "Ripeti"
+
+#. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
+#: addon\globalPlugins\zPortapapeles\ajustes.py:24
+#: addon\globalPlugins\zPortapapeles\ajustes.py:33
+msgid "Deshacer"
+msgstr "Annulla"
+
+#. Translators: Descripción de item para el choice del tiempo de opciones
+#: addon\globalPlugins\zPortapapeles\ajustes.py:47
+msgid "1 décima de segundo"
+msgstr "1 decimo di secondo"
+
+#. Translators: Descripción de item para el choice del tiempo de opciones
+#: addon\globalPlugins\zPortapapeles\ajustes.py:49
+msgid "2 décimas de segundo"
+msgstr "2 decimi di secondo"
+
+#. Translators: Descripción de item para el choice del tiempo de opciones
+#: addon\globalPlugins\zPortapapeles\ajustes.py:51
+msgid "3 décimas de segundo"
+msgstr "3 decimi di secondo"
+
+#. Translators: Descripción de item para el choice del tiempo de opciones
+#: addon\globalPlugins\zPortapapeles\ajustes.py:53
+msgid "4 décimas de segundo"
+msgstr "4 decimi di secondo"
+
+#. Translators: Descripción de item para el choice del tiempo de opciones
+#: addon\globalPlugins\zPortapapeles\ajustes.py:55
+msgid "5 décimas de segundo"
+msgstr "5 decimi di secondo"
+
+#. Translators: Descripción de item para el choice del tiempo de opciones
+#: addon\globalPlugins\zPortapapeles\ajustes.py:57
+msgid "1 segundo"
+msgstr "1 secondo"

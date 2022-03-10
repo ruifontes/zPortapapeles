@@ -1,6 +1,6 @@
 # Manual de zPortapapeles
 
-Este complemento tiene la base del complemento Fake Clipboard.
+Este complemento tiene la base del complemento Fake Clipboard Announcement.
 
 Con zPortapapeles tendremos el anuncio de las pulsaciones de copiar, pegar, deshacer, cortar y seleccionar todo.
 
@@ -46,7 +46,7 @@ Por ejemplo si tenemos abierto el bloc de notas y abrimos el historial y pulsamo
 
 ## Limitaciones de zPortapapeles
 
-zPortapapeles no es compatible con otros complementos que están instalados que hagan lo mismo como Fake Clipboard o Clipspeak pueden haber otros y en este caso tendrá que desactivarlos si desea usar zPortapapeles.
+zPortapapeles no es compatible con otros complementos que estén instalados y que hagan lo mismo, como Fake Clipboard Announcement o Clipspeak. Puede haber otros, y en este caso tendrá que desactivarlos si desea usar zPortapapeles.
 
 Apuntar que las entradas en el historial se borrarán cuando reiniciemos NVDA.
 
@@ -58,8 +58,17 @@ El historial de portapapeles de Windows puede tener entradas duplicadas si usamo
 * Portugués Brasil: pedro-hdias
 * Ruso: Valentin Kupriyanov
 * Turco: Umut KORKMAZ
+* Italiano: Alessio Lenzi
+* Francés: Rémy Ruiz
+* Árabe: Wafiq Taher
 
 # Registro de cambios.
+## Versión 0.3.1.
+
+* Se reescribió la función de impedir la ejecución del complemento en pantallas seguras.
+
+* Agregado idioma Árabe.
+
 ## Versión 0.3.
 
 * Agregado detección si hay texto seleccionado al copiar.
@@ -78,7 +87,7 @@ Esto no afectara al historial que si esta activo seguirá activo.
 
 Se soluciono un problema en distribuciones de teclado que usan caracteres cirílicos.
 
-* Agregados idiomas Ruso, Turco y Portugués Brasil.
+* Agregados idiomas Ruso, Turco, Italiano y Portugués Brasil.
 
 ## Versión 0.2.
 

@@ -35,11 +35,16 @@ from . import portapapeles as pt
 
 addonHandler.initTranslation()
 
-class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	def __init__(self, *args, **kwargs):
-		super(GlobalPlugin, self).__init__(*args, **kwargs)
+def disableInSecureMode(decoratedCls):
+	if globalVars.appArgs.secure:
+		return globalPluginHandler.GlobalPlugin
+	return decoratedCls
 
-		if globalVars.appArgs.secure or config.isAppX: raise RuntimeError(_("ZPortapapeles no se puede usar en escritorios seguros") )
+
+@disableInSecureMode
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+	def __init__(self):
+		super(GlobalPlugin, self).__init__()
 
 		ajustes.setup()
 		NVDASettingsDialog.categoryClasses.append(PortapapelesPanel)
@@ -64,6 +69,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		except:
 			pass
 		core.postNvdaStartup.unregister(self.postStartupHandler)
+		super().terminate()
 
 	def event_UIA_notification(self, obj, nextHandler, activityId=None, **kwargs):
 		# Función para detectar las combinaciones de teclas seleccionar todo,, copiar, pegar y borrar de Word y excel

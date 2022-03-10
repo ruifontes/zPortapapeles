@@ -13,8 +13,9 @@ import os
 import ctypes
 from ctypes.wintypes import BOOL, HWND, HANDLE, HGLOBAL, UINT, LPVOID
 from ctypes import c_size_t as SIZE_T
+from typing import (Any, Callable, Dict, List, Iterable, Tuple) 
 from . import ajustes
-from typing import (Any, Callable, Dict, List, Iterable, Tuple)  # need 'pip install typing' for 
+
 class ClipboardFormat:
     CF_TEXT = 1
     CF_BITMAP = 2

@@ -50,9 +50,31 @@ zPano geçmişini kullanırsak, Windows pano geçmişinde yinelenen girişler ol
 ## teşekkürler:  
 
 * Javi Domínguez: Özverili yardımları ve pano izleme işlevine katkıda bulunduğu için.
-* Umut KORKMAZ: Türkçe arayüz ve yardım dosyaları için.  
+* Portekizce Brezilya: pedro-hdias
+* Rusça: Valentin Kupriyanov
+* Türkçe: Umut KORKMAZ
 
 # Sürüm Geçmişi:
+## Sürüm 0.3:
+
+* Kopyalama sırasında metin seçilirse algılama eklendi.
+
+Artık kopyaladığımızda metin algılamıyorsa eklenti bize bir mesaj ile bildirecektir.  
+
+* Pano ile ilgili eklenti işlevlerini hızlı bir şekilde devre dışı bırakabilme ve etkinleştirebilme özelliği eklendi.
+
+Girdi hareketlerinde, panoya atıfta bulunulanları hızlı bir şekilde etkinleştirmek ve devre dışı bırakmak için bir kombinasyon yapılandırabiliriz.  
+
+Panoyu devre dışı bıraktığımızda mesajlar, NVDA'nın pano için önceden tanımladığı mesajlarla birlikte Windows'un yerel mesajları olacaktır.  
+
+Bu, aktif olduğu takdirde etkin olan geçmişi etkilemeyecektir.  
+
+* Kiril karakterlerini kullanan klavyeler için destek eklendi.
+
+Kiril karakterlerini kullanan klavye düzenlerindeki bir sorun düzeltildi.  
+
+* Rusça, Türkçe ve Portekizce Brezilya dilleri eklendi.
+
 ## Sürüm 0.2:
 
 * Tüm pano işlevleri cTypes olarak değiştirildi.
