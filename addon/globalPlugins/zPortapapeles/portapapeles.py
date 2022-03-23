@@ -10,10 +10,15 @@ from tones import beep
 from threading import Thread, Lock
 from time import sleep
 import os
+import sys
 import ctypes
 from ctypes.wintypes import BOOL, HWND, HANDLE, HGLOBAL, UINT, LPVOID
 from ctypes import c_size_t as SIZE_T
 from typing import (Any, Callable, Dict, List, Iterable, Tuple) 
+dirAddonPath=os.path.dirname(__file__)
+sys.path.append(dirAddonPath)
+import trans_clipboard as Trans
+del sys.path[-1]
 from . import ajustes
 
 class ClipboardFormat:
@@ -140,7 +145,16 @@ def detect() -> Dict[int, str]:
 
 def talk(text):
 	# Función para mandar mensaje de lo copiado fuera del hilo de tiempo
+#	traducir = traductor.translate(datos['description'], ajustes.langDict.get(ajustes.tempLang))
 	ui.message(text)
+
+def talkLang(text):
+	# Función para mandar mensaje de lo copiado fuera del hilo de tiempo
+	try:
+		traducir = Trans.translate(text, ajustes.langDict.get(ajustes.langTrans))
+		wx.CallAfter(ui.message, traducir)
+	except:
+		pass
 
 class ClipMonitor(Thread):
 # Clase de hilo con tiempo para monitorizar el contenido del portapapeles y actuar en consecuencia
@@ -246,10 +260,61 @@ class ClipMonitor(Thread):
 		self.__candado.release()
 
 	def pausar(self):
+		self.__candado.acquire()
 		self.pausa = True
 
 	def reanudar(self):
 		self.pausa = False
+		self.__candado.release()
+
+	def SetTimer(self, valor):
+		self.__candado.acquire()
+		self.tiempo = valor
+		self.__candado.release()
+
+	def kill(self):
+		self.__flag = False
+
+class ClipMonitorGame(Thread):
+# Clase de hilo con tiempo para monitorizar el contenido del portapapeles y actuar en consecuencia
+	def __init__(self, tiempo, *args, **kwargs):
+		Thread.__init__(self, *args, **kwargs)
+
+		self.tiempo = tiempo
+		self.__flag = True
+		self.pausa = False
+		self.__candado = Lock()
+		self.temp = ""
+		self.temp1 = ""
+	def run(self):
+		while self.__flag:
+			try:
+				clip = get()
+				self.__candado.acquire() # Cerramos el candado para evitar que un hilo intente leer al mismo tiempo que otro está escribiendo
+				self.temp = clip
+				if self.pausa == False: # Si no hay pausa continuamos
+					if clip is not None: # Si no hay nada en el portapapeles continuamos
+						if self.temp == self.temp1:
+							pass
+						else:
+							wx.CallAfter(self.onTalk, self.temp)
+							self.temp1 = clip
+				self.__candado.release() # Abrimos el candado
+				sleep(self.tiempo) # Hacemos una pausa de un segundo. Puede ser más o menos pero una mínima pausa hay que hacer si no probablemente se bloquearía.
+			except OSError: # Se ha copiado un objeto que no es texto
+				pass
+
+	def onTalk(self, texto):
+		Thread(target=talkLang, args=[texto], daemon= True).start()
+#		wx.CallAfter(talkLang, texto)
+
+	def pausar(self):
+		self.__candado.acquire()
+		self.pausa = True
+
+	def reanudar(self):
+		self.pausa = False
+		self.__candado.release()
 
 	def SetTimer(self, valor):
 		self.__candado.acquire()

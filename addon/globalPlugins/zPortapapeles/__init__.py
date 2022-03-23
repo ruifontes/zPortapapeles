@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2022 Héctor J. Benítez Corredera <xebolax@gmail.com>
-# This file is covered by the GNU General Public License.
+# This file is covered bTy the GNU General Public License.
 
 #Idea original de  Peter Vagner <peter.v@datagate.sk>
 
@@ -50,6 +50,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		NVDASettingsDialog.categoryClasses.append(PortapapelesPanel)
 		self.old = speech.getState()
 		self.monitor = None
+		self.monitorGame = None
 		ajustes._main = self
 		if hasattr(globalVars, 'zPortapapeles'):
 			self.postStartupHandler()
@@ -58,9 +59,20 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def postStartupHandler(self):
 		pt.clean()
-		if ajustes.historial:
-			self.monitor = pt.ClipMonitor(ajustes.tiempoDict.get(ajustes.tiempo), daemon=True)
-			self.monitor.start()
+		if ajustes.isGame:
+			if ajustes.historial:
+				self.monitor = pt.ClipMonitor(ajustes.tiempoDict.get(ajustes.tiempo), daemon=True)
+				self.monitor.start()
+				self.monitor.pausar()
+			self.monitorGame = pt.ClipMonitorGame(ajustes.tiempoDict.get(ajustes.tiempoLang), daemon=True)
+			self.monitorGame.start()
+		else:
+			if ajustes.historial:
+				self.monitor = pt.ClipMonitor(ajustes.tiempoDict.get(ajustes.tiempo), daemon=True)
+				self.monitor.start()
+			self.monitorGame = pt.ClipMonitorGame(ajustes.tiempoDict.get(ajustes.tiempoLang), daemon=True)
+			self.monitorGame.start()
+			self.monitorGame.pausar()
 
 	def terminate(self):
 		NVDASettingsDialog.categoryClasses.remove(PortapapelesPanel)
@@ -68,6 +80,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.monitor.kill()
 		except:
 			pass
+		try:
+			self.monitorGame.kill()
+		except:
+			pass
+
 		core.postNvdaStartup.unregister(self.postStartupHandler)
 		super().terminate()
 
@@ -207,44 +224,108 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		category= _("zPortapapeles"))
 	def script_Run(self, event):
 		# Función para mostrar la ventana del historial. Contempla distintos errores como ventana ya abierta, opción no configurada o no hay nada en el historial.
-		if ajustes.historial == True:
-			if len(self.monitor.historial) == 0:
-				# Translators: Mensaje informativo de que el historial se encuentra vacío
-				msg = \
-_("""No hay nada en el historial de zPortapapeles.""")
-				ui.message(msg)
-			else:
-				if ajustes.winOn == False:
-					HiloComplemento(1)
-				else:
-					# Translators: Mensaje informativo el cual le dice al usuario que no es posible abrir 2 ventanas del historial a la vez
+		if ajustes.isGame:
+			msg = \
+_("""El modo juego esta activado.
+
+Desactívelo para usar esta opción.""")
+			ui.message(msg)
+		else:
+			if ajustes.historial == True:
+				if len(self.monitor.historial) == 0:
+					# Translators: Mensaje informativo de que el historial se encuentra vacío
 					msg = \
+_("""No hay nada en el historial de zPortapapeles.""")
+					ui.message(msg)
+				else:
+					if ajustes.winOn == False:
+						HiloComplemento(1)
+					else:
+						# Translators: Mensaje informativo el cual le dice al usuario que no es posible abrir 2 ventanas del historial a la vez
+						msg = \
 _("""Ya hay una ventana del historial abierta.
 
 No es posible tener dos ventanas a la vez.""")
-					ui.message(msg)
-		else:
-			# Translators: Mensaje informativo que le indica al usuario que el historial no esta activado y como proceder si desea usarlo
-			msg = \
+						ui.message(msg)
+			else:
+				# Translators: Mensaje informativo que le indica al usuario que el historial no esta activado y como proceder si desea usarlo
+				msg = \
 _("""El historial del portapapeles no está activado.
 
 Si desea usarlo, actívelo desde las opciones de NVDA en Opciones de zPortapapeles.""")
-			ui.message(msg)
+				ui.message(msg)
 
 	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 	@scriptHandler.script(gesture=None, description= _("Activar o desactivar las propiedades de zPortapapeles"),
 		# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
 		category= _("zPortapapeles"))
 	def script_power(self, event):
-		if ajustes.isActivo:
-			ajustes.setConfig("activado", False)
-			ajustes.isActivo = False
-			ui.message(_("zPortapapeles desactivado"))
+		if ajustes.isGame:
+			msg = \
+_("""El modo juego esta activado.
+
+Desactívelo para usar esta opción.""")
+			ui.message(msg)
+		else:
+			if ajustes.isActivo:
+				ajustes.setConfig("activado", False)
+				ajustes.isActivo = False
+				ui.message(_("zPortapapeles desactivado"))
+				beep(100,150)
+			else:
+				ajustes.setConfig("activado", True)
+				ajustes.isActivo = True
+				ui.message(_("zPortapapeles activado"))
+				beep(400,150)
+
+	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+	@scriptHandler.script(gesture=None, description= _("Activar o desactivar modo juego"),
+		# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
+		category= _("zPortapapeles"))
+	def script_games(self, event):
+
+		if ajustes.winOn:
+			msg = \
+_("""Tiene una ventana de historial abierta.
+
+Para ejecutar el modo juego ciérrela primero.""")
+			ui.message(msg)
+			return
+
+		pt.clean()
+		if ajustes.isGame:
+			if ajustes.getConfig("historial"):
+				self.monitor.reanudar()
+			ajustes.voz = ajustes.getConfig("voz")
+			ajustes.audio = ajustes.getConfig("audio")
+			ajustes.historial = ajustes.getConfig("historial")
+			ajustes.tiempo = ajustes.getConfig("tiempo")
+			ajustes.sndHistorial = ajustes.getConfig("sonidoHistorial")
+			ajustes.talkPaste = ajustes.getConfig("vozCopiado")
+			ajustes.setConfig("game", False)
+			ajustes.isGame = False
+			ajustes.isActivo = ajustes.getConfig("activado")
+			ajustes.tiempoLang = ajustes.getConfig("tiempoLang")
+			ajustes.langTrans = ajustes.getConfig("langTrans")
+			self.monitorGame.pausar()
+			ui.message(_("Modo juego de zPortapapeles desactivado"))
 			beep(100,150)
 		else:
-			ajustes.setConfig("activado", True)
-			ajustes.isActivo = True
-			ui.message(_("zPortapapeles activado"))
+			if ajustes.getConfig("historial"):
+				self.monitor .pausar()
+			ajustes.voz = False
+			ajustes.audio = False
+			ajustes.historial = False
+			ajustes.tiempo = ajustes.getConfig("tiempo")
+			ajustes.sndHistorial = False
+			ajustes.talkPaste = False
+			ajustes.setConfig("game", True)
+			ajustes.isGame = True
+			ajustes.isActivo = ajustes.getConfig("activado")
+			ajustes.tiempoLang = ajustes.getConfig("tiempoLang")
+			ajustes.langTrans = ajustes.getConfig("langTrans")
+			self.monitorGame.reanudar()
+			ui.message(_("Modo juego de zPortapapeles activado"))
 			beep(400,150)
 
 	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
@@ -269,39 +350,47 @@ class PortapapelesPanel(SettingsPanel):
 	def makeSettings(self, sizer):
 
 		helper=guiHelper.BoxSizerHelper(self, sizer=sizer)
+		if ajustes.isGame == False:
+			# Translators: Descripción para el checkbox de opciones
+			self.vozChk = helper.addItem(wx.CheckBox(self, label=_("Activar o desactivar anuncios hablados del portapapeles")))
+			self.vozChk.Value = ajustes.voz
+			# Translators: Descripción para el checkbox de opciones
+			self.audioChk = helper.addItem(wx.CheckBox(self, label=_("Activar o desactivar sonidos del portapapeles")))
+			self.audioChk.Value = ajustes.audio
+			# Translators: Descripción para el checkbox de opciones
+			self.historialChk = helper.addItem(wx.CheckBox(self, label=_("Activar o desactivar el historial del portapapeles")))
+			self.historialChk.Value = ajustes.historial
+			self.historialChk.Bind(wx.EVT_CHECKBOX,self.onTimer)
+			# Translators: Descripción de la etiqueta del choice de opciones
+			self.choiceTimer = helper.addLabeledControl(_("Elija un tiempo para actualizar el monitor del portapapeles"), wx.Choice, choices=ajustes.tiempoChk)
+			# Translators: Descripción para el checkbox de opciones
+			self.sndHistorialChk = helper.addItem(wx.CheckBox(self, label=_("Notificar con un sonido cada vez que se agregue algo al historial")))
+			self.sndHistorialChk.Value = ajustes.sndHistorial
+			# Translators: Descripción para el checkbox de opciones
+			self.vozCopiadoChk = helper.addItem(wx.CheckBox(self, label=_("Hablar lo copiado al portapapeles y agregado al Historial")))
+			self.vozCopiadoChk.Value = ajustes.talkPaste
 
-		# Translators: Descripción para el checkbox de opciones
-		self.vozChk = helper.addItem(wx.CheckBox(self, label=_("Activar o desactivar anuncios hablados del portapapeles")))
-		self.vozChk.Value = ajustes.voz
-		# Translators: Descripción para el checkbox de opciones
-		self.audioChk = helper.addItem(wx.CheckBox(self, label=_("Activar o desactivar sonidos del portapapeles")))
-		self.audioChk.Value = ajustes.audio
-		# Translators: Descripción para el checkbox de opciones
-		self.historialChk = helper.addItem(wx.CheckBox(self, label=_("Activar o desactivar el historial del portapapeles")))
-		self.historialChk.Value = ajustes.historial
-		self.historialChk.Bind(wx.EVT_CHECKBOX,self.onTimer)
+			if self.historialChk.Value:
+				self.choiceTimer.Enable()
+				self.sndHistorialChk.Enable()
+				self.vozCopiadoChk.Enable()
+			else:
+				self.choiceTimer.Disable()
+				self.sndHistorialChk.Disable()
+				self.vozCopiadoChk.Disable()
+
+			self.choiceTimer.Selection = ajustes.tiempo
+
+			self.tempHistorial = ajustes.historial
+			self.tempTiempo = ajustes.tiempo
+
 		# Translators: Descripción de la etiqueta del choice de opciones
-		self.choiceTimer = helper.addLabeledControl(_("Elija un tiempo para actualizar el monitor del portapapeles"), wx.Choice, choices=ajustes.tiempoChk)
-		# Translators: Descripción para el checkbox de opciones
-		self.sndHistorialChk = helper.addItem(wx.CheckBox(self, label=_("Notificar con un sonido cada vez que se agregue algo al historial")))
-		self.sndHistorialChk.Value = ajustes.sndHistorial
-		# Translators: Descripción para el checkbox de opciones
-		self.vozCopiadoChk = helper.addItem(wx.CheckBox(self, label=_("Hablar lo copiado al portapapeles y agregado al Historial")))
-		self.vozCopiadoChk.Value = ajustes.talkPaste
-
-		if self.historialChk.Value:
-			self.choiceTimer.Enable()
-			self.sndHistorialChk.Enable()
-			self.vozCopiadoChk.Enable()
-		else:
-			self.choiceTimer.Disable()
-			self.sndHistorialChk.Disable()
-			self.vozCopiadoChk.Disable()
-
-		self.choiceTimer.Selection = ajustes.tiempo
-
-		self.tempHistorial = ajustes.historial
-		self.tempTiempo = ajustes.tiempo
+		self.choiceTimerGame = helper.addLabeledControl(_("Elija un tiempo para actualizar el monitor del portapapeles para el modo juego"), wx.Choice, choices=ajustes.tiempoChk)
+		# Translators: Descripción de la etiqueta del choice de opciones
+		self.choiceLang = helper.addLabeledControl(_("Elija un idioma destino para la traducción en modo juego"), wx.Choice, choices=ajustes.langLST)
+		self.choiceTimerGame.Selection = ajustes.tiempoLang
+		self.choiceLang.Selection = ajustes.langTrans
+		self.tempTiempoGame = ajustes.tiempoLang
 
 	def onTimer(self, event):
 		chk = event.GetEventObject()
@@ -315,32 +404,43 @@ class PortapapelesPanel(SettingsPanel):
 			self.vozCopiadoChk.Disable()
 
 	def onSave(self):
-		ajustes.setConfig("voz", self.vozChk.Value)
-		ajustes.voz = self.vozChk.Value
-		ajustes.setConfig("audio", self.audioChk.Value)
-		ajustes.audio = self.audioChk.Value
-		ajustes.setConfig("historial", self.historialChk.Value)
-		ajustes.historial = self.historialChk.Value
-		ajustes.setConfig("tiempo", self.choiceTimer.Selection)
-		ajustes.tiempo =self.choiceTimer.Selection
-		ajustes.setConfig("sonidoHistorial", self.sndHistorialChk.Value)
-		ajustes.sndHistorial = self.sndHistorialChk.Value
-		ajustes.setConfig("vozCopiado", self.vozCopiadoChk.Value)
-		ajustes.talkPaste = self.vozCopiadoChk.Value
+		if ajustes.isGame == False:
+			ajustes.setConfig("voz", self.vozChk.Value)
+			ajustes.voz = self.vozChk.Value
+			ajustes.setConfig("audio", self.audioChk.Value)
+			ajustes.audio = self.audioChk.Value
+			ajustes.setConfig("historial", self.historialChk.Value)
+			ajustes.historial = self.historialChk.Value
+			ajustes.setConfig("tiempo", self.choiceTimer.Selection)
+			ajustes.tiempo =self.choiceTimer.Selection
+			ajustes.setConfig("sonidoHistorial", self.sndHistorialChk.Value)
+			ajustes.sndHistorial = self.sndHistorialChk.Value
+			ajustes.setConfig("vozCopiado", self.vozCopiadoChk.Value)
+			ajustes.talkPaste = self.vozCopiadoChk.Value
 
-		if self.tempHistorial:
-			if ajustes.historial:
-				if self.tempTiempo ==ajustes.tiempo:
-					return
+			if self.tempHistorial:
+				if ajustes.historial:
+					if self.tempTiempo ==ajustes.tiempo:
+						return
+					else:
+						ajustes._main.monitor.SetTimer(ajustes.tiempoDict.get(ajustes.tiempo))
 				else:
-					ajustes._main.monitor.SetTimer(ajustes.tiempoDict.get(ajustes.tiempo))
+					ajustes._main.monitor.kill()
 			else:
-				ajustes._main.monitor.kill()
-		else:
-			if ajustes.historial:
-				ajustes._main.postStartupHandler()
-			else:
+				if ajustes.historial:
+					ajustes._main.postStartupHandler()
+				else:
+					return
+
+		ajustes.setConfig("tiempoLang", self.choiceTimerGame.Selection)
+		ajustes.tiempoLang =self.choiceTimerGame.Selection
+		ajustes.setConfig("langTrans", self.choiceLang.Selection)
+		ajustes.langTrans =self.choiceLang.Selection
+		if ajustes.isGame:
+			if self.tempTiempoGame ==ajustes.tiempoLang:
 				return
+			else:
+				ajustes._main.monitorGame.SetTimer(ajustes.tiempoDict.get(ajustes.tiempoLang))
 
 	def onPanelActivated(self):
 		self.originalProfileName = config.conf.profiles[-1].name

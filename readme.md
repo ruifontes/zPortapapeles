@@ -63,6 +63,20 @@ El historial de portapapeles de Windows puede tener entradas duplicadas si usamo
 * Árabe: Wafiq Taher
 
 # Registro de cambios.
+## Versión 0.4.
+
+* Agregado modo juego.
+
+Para activar dicho modo tendremos que asignarle un gesto en el gestor de entradas.
+
+Este modo ira bien para aquellos juegos que copian al portapapeles y necesitan de traducción.
+
+En opciones del complemento tendremos la posibilidad de aumentar el refresco de actualización del portapapeles y la posibilidad de elegir el idioma destino de la traducción.
+
+El idioma origen en este caso del juego se detectara automáticamente y se traducirá lo copiado al portapapeles al idioma que hayamos elegido.
+
+Mientras el modo juego esta activado todas las ordenes del resto de complemento quedan deshabilitadas incluido el historial del portapapeles.
+
 ## Versión 0.3.1.
 
 * Se reescribió la función de impedir la ejecución del complemento en pantallas seguras.

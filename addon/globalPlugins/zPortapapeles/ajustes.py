@@ -57,6 +57,24 @@ tiempoChk = [
 	_("1 segundo")
 ]
 
+# Lista con idiomas para las traducciones
+langLST = [_("Alemán"), _("Árabe"), _("Croata"), _("Español"), _("Francés"), _("Inglés"), _("Italiano"), _("Polaco"), _("Portugués"), _("Ruso"), _("Turco"), _("Ucraniano")]
+# Diccionario con las abreviaturas de idioma
+langDict = {
+	0:"de",
+	1:"ar",
+	2:"hr",
+	3:"es",
+	4:"fr",
+	5:"en",
+	6:"it",
+	7:"pl",
+	8:"pt",
+	9:"ru",
+	10:"tr",
+	11:"uk",
+}
+
 _main = None
 audio = None
 voz = None
@@ -64,7 +82,10 @@ historial = None
 tiempo = None
 sndHistorial = None
 talkPaste = None
+isGame = None
 isActivo = None
+tiempoLang = None
+langTrans = None
 winOn = False
 
 def initConfiguration():
@@ -76,6 +97,9 @@ def initConfiguration():
 		"sonidoHistorial": "boolean(default=False)",
 		"vozCopiado": "boolean(default=False)",
 		"activado": "boolean(default=True)",
+		"game": "boolean(default=False)",
+		"tiempoLang": "integer(default=1, min=0, max=5)",
+		"langTrans": "integer(default=5, min=0, max=11)",
 	}
 	config.conf.spec['zPortapapeles'] = confspec
 
@@ -90,7 +114,7 @@ def setConfig(key, value):
 		config.conf["zPortapapeles"][key] = value
 
 def setup():
-	global voz, audio, historial, tiempo, sndHistorial, talkPaste, isActivo
+	global voz, audio, historial, tiempo, sndHistorial, talkPaste, isGame, isActivo, tiempoLang, langTrans
 	initConfiguration()
 	voz = getConfig("voz")
 	audio = getConfig("audio")
@@ -98,4 +122,7 @@ def setup():
 	tiempo = getConfig("tiempo")
 	sndHistorial = getConfig("sonidoHistorial")
 	talkPaste = getConfig("vozCopiado")
+	isGame = getConfig("game")
 	isActivo = getConfig("activado")
+	tiempoLang = getConfig("tiempoLang")
+	langTrans = getConfig("langTrans")
