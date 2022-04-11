@@ -421,7 +421,7 @@ class PortapapelesPanel(SettingsPanel):
 			if self.tempHistorial:
 				if ajustes.historial:
 					if self.tempTiempo ==ajustes.tiempo:
-						return
+						pass
 					else:
 						ajustes._main.monitor.SetTimer(ajustes.tiempoDict.get(ajustes.tiempo))
 				else:
@@ -430,7 +430,7 @@ class PortapapelesPanel(SettingsPanel):
 				if ajustes.historial:
 					ajustes._main.postStartupHandler()
 				else:
-					return
+					pass
 
 		ajustes.setConfig("tiempoLang", self.choiceTimerGame.Selection)
 		ajustes.tiempoLang =self.choiceTimerGame.Selection
@@ -438,7 +438,7 @@ class PortapapelesPanel(SettingsPanel):
 		ajustes.langTrans =self.choiceLang.Selection
 		if ajustes.isGame:
 			if self.tempTiempoGame ==ajustes.tiempoLang:
-				return
+				pass
 			else:
 				ajustes._main.monitorGame.SetTimer(ajustes.tiempoDict.get(ajustes.tiempoLang))
 

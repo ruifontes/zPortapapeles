@@ -1,1 +1,1 @@
-* Añadido modo juego.
+* Solucionado problema al guardar el tiempo de refresco del modo juego

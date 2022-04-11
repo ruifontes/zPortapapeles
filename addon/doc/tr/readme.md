@@ -55,6 +55,26 @@ zPano geçmişini kullanırsak, Windows pano geçmişinde yinelenen girişler ol
 * Türkçe: Umut KORKMAZ
 
 # Sürüm Geçmişi:
+
+## Sürüm 0.4.
+
+* Oyun modu eklendi.
+
+Bu modu etkinleştirmek için, girdi Hareketleri penceresinde bir hareket atamamız gerekir.  
+
+Bu mod, panoya kopyalanan ve çeviriye ihtiyaç duyan oyunlar için iyi çalışır.  
+
+Eklenti seçeneklerinde, pano güncellemesinin yenileme hızını artırma ve çevirinin hedef dilini seçme olanağına sahip olacağız.  
+
+Bu durumda oyunun kaynak dili otomatik olarak algılanacak ve panoya kopyalananlar seçtiğimiz dile çevrilecektir.  
+
+Oyun modu etkinleştirilirken, pano geçmişi de dahil olmak üzere eklentinin geri kalan tüm komutları devre dışı bırakılır.  
+
+## Sürüm 0.3.1.
+
+* Eklentinin güvenli ekranlarda çalışmasını önlemek için güncelleme yapıldı.
+* Arapça dil eklendi.
+
 ## Sürüm 0.3:
 
 * Kopyalama sırasında metin seçilirse algılama eklendi.
