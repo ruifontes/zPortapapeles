@@ -1,0 +1,415 @@
+# Brazilian Portuguese translation of resourceMonitor.
+# Copyright (C) 2013-2021 NVDA Contributors.
+# This file is distributed under the same license as the NVDA package.
+# Cleverson Casarin Uliana <clever97@gmail.com>, 2013-2014, 2017, 2019.
+# Tiago Melo Casal <tcasal@intervox.nce.ufrj.br>, 2018, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: z_Área_de_transferência\n"
+"Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
+"POT-Creation-Date: 2022-06-02 17:33+0100\n"
+"PO-Revision-Date: 2022-06-02 17:52+0100\n"
+"Last-Translator: Ângelo Abrantes <ampa4374@gmail.com>\n"
+"Language-Team: Equipa portuguesa do NVDA\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../../../globalPlugins\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: zPortapapeles/__init__.py:165 zPortapapeles/__init__.py:198
+#: zPortapapeles/ajustes.py:18 zPortapapeles/ajustes.py:28
+msgid "Copiar"
+msgstr "Copiar"
+
+#: zPortapapeles/__init__.py:174 zPortapapeles/__init__.py:205
+msgid "Sin selección"
+msgstr "Sem selecção"
+
+#: zPortapapeles/__init__.py:222
+msgid "Muestra la ventana de historial del portapapeles"
+msgstr "Mostra a janela do histórico da área de transferência"
+
+#: zPortapapeles/__init__.py:224 zPortapapeles/__init__.py:261
+#: zPortapapeles/__init__.py:284 zPortapapeles/__init__.py:334
+msgid "zPortapapeles"
+msgstr "zÁrea de transferência"
+
+#: zPortapapeles/__init__.py:229 zPortapapeles/__init__.py:265
+msgid ""
+"El modo juego esta activado.\n"
+"\n"
+"Desactívelo para usar esta opción."
+msgstr ""
+"O modo de jogo está activado.\n"
+"\n"
+"Desligue-o para utilizar esta opção."
+
+#: zPortapapeles/__init__.py:238
+msgid "No hay nada en el historial de zPortapapeles."
+msgstr "Não há nada no histórico do zÁrea de transferência."
+
+#: zPortapapeles/__init__.py:246
+msgid ""
+"Ya hay una ventana del historial abierta.\n"
+"\n"
+"No es posible tener dos ventanas a la vez."
+msgstr ""
+"Já existe uma janela de histórico aberta.\n"
+"\n"
+"Não é possível ter duas janelas ao mesmo tempo."
+
+#: zPortapapeles/__init__.py:253
+msgid ""
+"El historial del portapapeles no está activado.\n"
+"\n"
+"Si desea usarlo, actívelo desde las opciones de NVDA en Opciones de "
+"zPortapapeles."
+msgstr ""
+"O histórico da área de transferência não está activado.\n"
+"\n"
+"Se quiser usá-lo, active-o nas opções do NVDA em Opções do zÁrea de "
+"transferência."
+
+#: zPortapapeles/__init__.py:259
+msgid "Activar o desactivar las propiedades de zPortapapeles"
+msgstr "Activar ou desactivar as propriedades do zÁrea de transferência"
+
+#: zPortapapeles/__init__.py:273
+msgid "zPortapapeles desactivado"
+msgstr "zÁrea de transferência desactivado"
+
+#: zPortapapeles/__init__.py:278
+msgid "zPortapapeles activado"
+msgstr "zÁrea de transferência activado"
+
+#: zPortapapeles/__init__.py:282
+msgid "Activar o desactivar modo juego"
+msgstr "Activar ou desactivar o modo de jogo"
+
+#: zPortapapeles/__init__.py:289
+msgid ""
+"Tiene una ventana de historial abierta.\n"
+"\n"
+"Para ejecutar el modo juego ciérrela primero."
+msgstr ""
+"Tem uma janela de histórico aberta.\n"
+"\n"
+"Para executar o modo de jogo, feche-a primeiro."
+
+#: zPortapapeles/__init__.py:311
+msgid "Modo juego de zPortapapeles desactivado"
+msgstr "Modo de jogo de zÁrea de transferência desactivado"
+
+#: zPortapapeles/__init__.py:328
+msgid "Modo juego de zPortapapeles activado"
+msgstr "Modo de jogo do zÁrea de transferência activado"
+
+#: zPortapapeles/__init__.py:332
+msgid ""
+"Teclas predefinidas del portapapeles (cambiar solo en distribuciones de "
+"portapapeles distinto)"
+msgstr ""
+"Teclas padrão do zÁrea de transferência (alterar apenas em diferentes "
+"visualizações da área de transferência)"
+
+#: zPortapapeles/__init__.py:348
+msgid "Opciones de zPortapapeles"
+msgstr "Opções do zÁrea de transferência"
+
+#: zPortapapeles/__init__.py:355
+msgid "Activar o desactivar anuncios hablados del portapapeles"
+msgstr "Activar ou desactivar os anúncios falados da área de transferência"
+
+#: zPortapapeles/__init__.py:358
+msgid "Activar o desactivar sonidos del portapapeles"
+msgstr "Activar ou desactivar os sons da área de transferência"
+
+#: zPortapapeles/__init__.py:361
+msgid "Activar o desactivar el historial del portapapeles"
+msgstr "Activar ou desactivar o histórico da área de transferência"
+
+#: zPortapapeles/__init__.py:365
+msgid "Elija un tiempo para actualizar el monitor del portapapeles"
+msgstr "Escolha um tempo para actualizar o monitor da área de transferência"
+
+#: zPortapapeles/__init__.py:367
+msgid "Notificar con un sonido cada vez que se agregue algo al historial"
+msgstr "Notificar com um som sempre que algo for adicionado ao histórico"
+
+#: zPortapapeles/__init__.py:370
+msgid "Hablar lo copiado al portapapeles y agregado al Historial"
+msgstr ""
+"Falar o que foi copiado para a área de transferência e adicionado ao "
+"Histórico"
+
+#: zPortapapeles/__init__.py:388
+msgid ""
+"Elija un tiempo para actualizar el monitor del portapapeles para el modo "
+"juego"
+msgstr ""
+"Escolha um tempo para actualizar o monitor da área de transferência para o "
+"modo de jogo"
+
+#: zPortapapeles/__init__.py:390
+msgid "Elija un idioma destino para la traducción en modo juego"
+msgstr "Escolha uma língua de destino para tradução no modo de jogo"
+
+#: zPortapapeles/__init__.py:473
+msgid "Historial del Portapapeles"
+msgstr "Histórico da área de transferência"
+
+#: zPortapapeles/__init__.py:482
+msgid "&Historial:"
+msgstr "&Histórico:"
+
+#: zPortapapeles/__init__.py:493
+msgid "&Borrar"
+msgstr "&Apagar"
+
+#: zPortapapeles/__init__.py:497
+msgid "Borrar &todo"
+msgstr "Apagar &tudo"
+
+#: zPortapapeles/__init__.py:501
+msgid "&Refrescar"
+msgstr "&Recarregar"
+
+#: zPortapapeles/__init__.py:505
+msgid "&Cerrar"
+msgstr "&Fechar"
+
+#: zPortapapeles/__init__.py:591
+msgid "Pegado al foco."
+msgstr "Colado no foco."
+
+#: zPortapapeles/ajustes.py:12 zPortapapeles/ajustes.py:14
+#: zPortapapeles/ajustes.py:31
+msgid "Seleccionar todo"
+msgstr "Seleccionar tudo"
+
+#: zPortapapeles/ajustes.py:16 zPortapapeles/ajustes.py:29
+msgid "Cortar"
+msgstr "Cortar"
+
+#: zPortapapeles/ajustes.py:20 zPortapapeles/ajustes.py:30
+msgid "Pegar"
+msgstr "Colar"
+
+#: zPortapapeles/ajustes.py:22 zPortapapeles/ajustes.py:32
+msgid "Rehacer"
+msgstr "Refazer"
+
+#: zPortapapeles/ajustes.py:24 zPortapapeles/ajustes.py:33
+msgid "Deshacer"
+msgstr "Desfazer"
+
+#: zPortapapeles/ajustes.py:47
+msgid "1 décima de segundo"
+msgstr "1 décima de segundo"
+
+#: zPortapapeles/ajustes.py:49
+msgid "2 décimas de segundo"
+msgstr "2 décimas de segundo"
+
+#: zPortapapeles/ajustes.py:51
+msgid "3 décimas de segundo"
+msgstr "3 décimas de segundo"
+
+#: zPortapapeles/ajustes.py:53
+msgid "4 décimas de segundo"
+msgstr "4 décimas de segundo"
+
+#: zPortapapeles/ajustes.py:55
+msgid "5 décimas de segundo"
+msgstr "5 décimas de segundo"
+
+#: zPortapapeles/ajustes.py:57
+msgid "1 segundo"
+msgstr "1 segundo1 segundo"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Alemán"
+msgstr "Alemão"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Árabe"
+msgstr "Árabe"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Croata"
+msgstr "Croata"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Español"
+msgstr "Espanhol"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Francés"
+msgstr "Francês"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Inglés"
+msgstr "Inglês"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Italiano"
+msgstr "Italiano"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Polaco"
+msgstr "Polaco"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Portugués"
+msgstr "Português"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Ruso"
+msgstr "Russo"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Turco"
+msgstr "Turco"
+
+#: zPortapapeles/ajustes.py:61
+msgid "Ucraniano"
+msgstr "Ucraniano"
+
+#~ msgid "ZPortapapeles no se puede usar en escritorios seguros"
+#~ msgstr "O zClipboard não pode ser usado em janelas de segurança"
+
+#~ msgid "This computer does not have a battery connected."
+#~ msgstr "Este computador não possui bateria acoplada."
+
+#, python-brace-format
+#~ msgid "{percent}%, battery charging."
+#~ msgstr "{percent}%, carregando bateria."
+
+#, python-brace-format
+#~ msgid "{percent}% battery remaining, battery time unknown."
+#~ msgstr "Restam {percent}% da bateria, tempo de bateria desconhecido."
+
+#~ msgid "1 hour"
+#~ msgstr "1 hora"
+
+#, python-brace-format
+#~ msgid "{0} hours"
+#~ msgstr "{0} horas"
+
+#~ msgid "1 minute"
+#~ msgstr "1 minuto"
+
+#, python-brace-format
+#~ msgid "{0} minutes"
+#~ msgstr "{0} minutos"
+
+#, python-brace-format
+#~ msgid "{percent}% battery remaining, about {time}."
+#~ msgstr "Restam {percent}% da bateria, cerca de {time}."
+
+#~ msgid " Warning: low battery."
+#~ msgstr " Alerta: bateria baixa."
+
+#~ msgid " Warning: critically low battery."
+#~ msgstr " Alerta: bateria criticamente baixa."
+
+#, python-brace-format
+#~ msgid "{winVersion} ({cpuBit})"
+#~ msgstr "{winVersion} ({cpuBit})"
+
+#, python-brace-format
+#~ msgid "{winVersion} {servicePackLevel} ({cpuBit})"
+#~ msgstr "{winVersion} {servicePackLevel} ({cpuBit})"
+
+#~ msgid "Resource Monitor"
+#~ msgstr "Monitor de Recursos"
+
+#~ msgid ""
+#~ "Presents battery percentage, charging status, remaining time (if not "
+#~ "charging), and a warning if the battery is low or critical."
+#~ msgstr ""
+#~ "Mostra porcentagem de bateria, status da carga, tempo restante (se não "
+#~ "estiver carregando) e alerta caso a bateria esteja baixa ou crítica."
+
+#~ msgid ""
+#~ "Presents the used and total space of the static and removable drives on "
+#~ "this computer."
+#~ msgstr ""
+#~ "Mostra o espaço em uso e o total das unidades fixas e removíveis do "
+#~ "computador."
+
+#, python-brace-format
+#~ msgid ""
+#~ "{driveName} ({driveType} drive): {usedSpace} of {totalSpace} used "
+#~ "{percent}%."
+#~ msgstr ""
+#~ "{driveName} (unidade {driveType}): {usedSpace} em uso de {totalSpace}, "
+#~ "{percent}%."
+
+#~ msgid "Presents the average processor load and the load of each core."
+#~ msgstr "Mostra a carga média do processador e a carga de cada núcleo."
+
+#, python-brace-format
+#~ msgid "Core {coreNumber}: {corePercent}%"
+#~ msgstr "Núcleo {coreNumber}: {corePercent}%"
+
+#, python-brace-format
+#~ msgid "Average CPU load {avgLoad}%, {cores}."
+#~ msgstr "Carga média da CPU {avgLoad}%, {cores}."
+
+#~ msgid "Presents the used and total space for both physical and virtual ram."
+#~ msgstr "Mostra espaço em uso e total da memória física e da virtual."
+
+#, python-brace-format
+#~ msgid ""
+#~ "Physical: {physicalUsed} of {physicalTotal} used ({physicalPercent}%). "
+#~ msgstr ""
+#~ "Físico: em uso {physicalUsed} de {physicalTotal} ({physicalPercent}%). "
+
+#, python-brace-format
+#~ msgid "Virtual: {virtualUsed} of {virtualTotal} used ({virtualPercent}%)."
+#~ msgstr ""
+#~ "Virtual: em uso {virtualUsed} de {virtualTotal} ({virtualPercent}%)."
+
+#~ msgid "Announces the version of Windows you are using."
+#~ msgstr "Anuncia a versão de Windows que você usa."
+
+#~ msgid "1 day"
+#~ msgstr "1 dia"
+
+#, python-brace-format
+#~ msgid "{0} days"
+#~ msgstr "{0} dias"
+
+#, python-brace-format
+#~ msgid "{0} seconds"
+#~ msgstr "{0} segundos"
+
+#~ msgid "Announces the system's uptime."
+#~ msgstr "Anuncia o tempo desde que o sistema foi iniciado."
+
+#~ msgid "Failed to get the system's uptime."
+#~ msgstr "Falha ou obter o tempo desde que o sistema foi iniciado."
+
+#~ msgid ""
+#~ "Presents used ram, average processor load, and battery info if available."
+#~ msgstr ""
+#~ "Mostra ram em uso, carga média do processador e informações de bateria se "
+#~ "disponíveis."
+
+#, python-brace-format
+#~ msgid "{ramPercent}% RAM used, CPU at {cpuPercent}%."
+#~ msgstr "{ramPercent}% de RAM em uso, CPU a {cpuPercent}%."
+
+#~ msgid ""
+#~ "A handy resource monitor to report CPU load, memory usage, battery, disk "
+#~ "usage status and more."
+#~ msgstr ""
+#~ "Um monitor prático de recursos que anuncia carga da CPU, uso de memória, "
+#~ "status de bateria, uso de disco e outros."

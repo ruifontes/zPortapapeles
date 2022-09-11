@@ -60,8 +60,29 @@ L'historique de presse-papiers Windows peut avoir des entrées en double si nous
 * Turc: Umut KORKMAZ
 * Italien: Alessio Lenzi
 * Français: Rémy Ruiz
+* arabe: Wafiq Taher
 
 # Journal des changements.
+## Version 0.4.
+
+* Ajout du mode jeu.
+
+Pour activer ce mode, nous devrons attribuer un geste dans le dialogue Gestes de commandes.
+
+Ce mode se déroulera bien pour les jeux qui copient dans le presse-papiers et nécessiteront une traduction.
+
+Dans les paramètres de l'extension, nous aurons la possibilité d'augmenter le rafraîchissement de la mise à jour du presse-papiers et la possibilité de choisir la langue de destination de la traduction.
+
+La langue d'origine du jeu dans ce cas  sera automatiquement détecté et sera traduit dans le presse-papiers en la langue que nous avons choisie.
+
+Alors que le mode jeu est activé, tous les commandes du reste de l'extension sont désactivées, y compris l'historique du presse-papiers.
+
+## Version 0.3.1.
+
+* La fonction de prévenir l'exécution de l'extension sur les écrans sécurisés a été réécrite.
+
+* Ajout de la langue Arabe.
+
 ## Version 0.3.
 
 * Ajouter une détection s'il y a un texte sélectionné lors de la copie.
@@ -76,9 +97,9 @@ Lorsque nous désactivons le presse-papiers et les messages seront les natifs de
 
 Cela n'affectera pas l'historique que si c'est actif, celui-ci continuera  à être actif.
 
-* Ajout de la compatibilité avec les claviers qui utilisent des caractères cirilliques.
+* Ajout de la compatibilité avec les claviers qui utilisent des caractères cyrilliques.
 
-Un problème a été résolu dans les distributions de clavier qui utilisent des caractères cirilliques.
+Un problème a été résolu dans les distributions de clavier qui utilisent des caractères cyrilliques.
 
 * Ajout des langues Russe, Turc, Italien et Portugais Brésil.
 

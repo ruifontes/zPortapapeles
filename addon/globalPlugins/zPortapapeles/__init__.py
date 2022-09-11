@@ -329,6 +329,13 @@ Para ejecutar el modo juego ciérrela primero.""")
 			beep(400,150)
 
 	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+	@scriptHandler.script(gesture=None, description= _("Leer portapapeles"),
+		# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
+		category= _("zPortapapeles"))
+	def script_readClipboard(self, event):
+		HiloComplemento(2)
+
+	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 	script_gestos.__doc__ = _("Teclas predefinidas del portapapeles (cambiar solo en distribuciones de portapapeles distinto)")
 	# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
 	script_gestos.category = _("zPortapapeles")
@@ -635,5 +642,13 @@ class HiloComplemento(Thread):
 			gui.mainFrame.prePopup()
 			self._MainWindows.Show()
 
+		def lectorPortapapeles():
+			get = pt.get()
+			if get:
+				ui.message(get)
+			else:
+				ui.message(_("No hay texto en el portapapeles"))
 		if self.opcion == 1:
 			wx.CallAfter(HistorialDLG)
+		elif self.opcion == 2:
+			wx.CallAfter(lectorPortapapeles)
