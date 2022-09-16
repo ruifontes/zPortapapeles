@@ -63,6 +63,13 @@ El historial de portapapeles de Windows puede tener entradas duplicadas si usamo
 * Árabe: Wafiq Taher
 
 # Registro de cambios.
+## Versión 0.4.2.
+
+* Agregado la posibilidad de leer el contenido de portapapeles incluido portapapeles de más de 1024 caracteres.
+
+## Versión 0.4.1.
+
+* Solucionado problema al guardar el tiempo de refresco del modo juego
 ## Versión 0.4.
 
 * Agregado modo juego.

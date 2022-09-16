@@ -1,1 +1,1 @@
-* Solucionado problema al guardar el tiempo de refresco del modo juego
+* Agregado la posibilidad de leer el contenido de portapapeles incluido portapapeles de más de 1024 caracteres.
