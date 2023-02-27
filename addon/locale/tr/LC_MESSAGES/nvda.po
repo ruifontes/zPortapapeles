@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: zPano 0.4\n"
+"Project-Id-Version: zPano 0.4.2\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2022-03-23 16:46+0100\n"
-"PO-Revision-Date: 2022-03-31 20:24+0300\n"
+"POT-Creation-Date: 2022-09-11 12:55+0200\n"
+"PO-Revision-Date: 2022-09-11 18:03+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-Basepath: ../../../globalPlugins\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -25,6 +25,7 @@ msgstr ""
 #: addon\globalPlugins\zPortapapeles\__init__.py:261
 #: addon\globalPlugins\zPortapapeles\__init__.py:284
 #: addon\globalPlugins\zPortapapeles\__init__.py:334
+#: addon\globalPlugins\zPortapapeles\__init__.py:341
 msgid "zPortapapeles"
 msgstr "zPano"
 
@@ -40,13 +41,13 @@ msgstr "Pano, önemli duyuru ve geçmiş için yardımcı programlar."
 #: addon\globalPlugins\zPortapapeles\ajustes.py:18
 #: addon\globalPlugins\zPortapapeles\ajustes.py:28
 msgid "Copiar"
-msgstr "kopyala"
+msgstr "Kopyala"
 
 #. Sin nada seleccionado
 #: addon\globalPlugins\zPortapapeles\__init__.py:174
 #: addon\globalPlugins\zPortapapeles\__init__.py:205
 msgid "Sin selección"
-msgstr "seçim yok"
+msgstr "Seçim yok"
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 #: addon\globalPlugins\zPortapapeles\__init__.py:222
@@ -62,13 +63,13 @@ msgid ""
 msgstr ""
 "Oyun modu etkin olduğu için Geçmiş penceresini açamazsınız.\n"
 "\n"
-"Geçmiş penceresini kullanmak istiyorsanız lütfen önce oyun modunu devre "
-"dışı bırakın."
+"Geçmiş penceresini kullanmak istiyorsanız lütfen önce oyun modunu devre dışı "
+"bırakın."
 
 #. Translators: Mensaje informativo de que el historial se encuentra vacío
 #: addon\globalPlugins\zPortapapeles\__init__.py:238
 msgid "No hay nada en el historial de zPortapapeles."
-msgstr "zPano geçmişi boş."
+msgstr "ZPano geçmişi boş."
 
 #. Translators: Mensaje informativo el cual le dice al usuario que no es posible abrir 2 ventanas del historial a la vez
 #: addon\globalPlugins\zPortapapeles\__init__.py:246
@@ -97,7 +98,7 @@ msgstr ""
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 #: addon\globalPlugins\zPortapapeles\__init__.py:259
 msgid "Activar o desactivar las propiedades de zPortapapeles"
-msgstr "zPano özelliklerini aç veya kapat"
+msgstr "ZPano özelliklerini aç veya kapat"
 
 #: addon\globalPlugins\zPortapapeles\__init__.py:273
 msgid "zPortapapeles desactivado"
@@ -109,15 +110,10 @@ msgstr "zPano açık"
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 #: addon\globalPlugins\zPortapapeles\__init__.py:282
-#| msgid "Activar o desactivar sonidos del portapapeles"
 msgid "Activar o desactivar modo juego"
 msgstr "Oyun modunu Etkinleştir veya devre dışı bırak"
 
 #: addon\globalPlugins\zPortapapeles\__init__.py:289
-#| msgid ""
-#| "Ya hay una ventana del historial abierta.\n"
-#| "\n"
-#| "No es posible tener dos ventanas a la vez."
 msgid ""
 "Tiene una ventana de historial abierta.\n"
 "\n"
@@ -128,104 +124,112 @@ msgstr ""
 "Oyun modunu etkinleştirebilmek için, önce kapatmanız gerekir."
 
 #: addon\globalPlugins\zPortapapeles\__init__.py:311
-#| msgid "zPortapapeles desactivado"
 msgid "Modo juego de zPortapapeles desactivado"
-msgstr "zPano oyun modu devre dışı"
+msgstr "ZPano oyun modu devre dışı"
 
 #: addon\globalPlugins\zPortapapeles\__init__.py:328
-#| msgid "zPortapapeles activado"
 msgid "Modo juego de zPortapapeles activado"
-msgstr "zPano oyun modu etkin"
+msgstr "ZPano oyun modu etkin"
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 #: addon\globalPlugins\zPortapapeles\__init__.py:332
+#| msgid "zPortapapeles"
+msgid "Leer portapapeles"
+msgstr "Panoyu oku"
+
+#. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+#: addon\globalPlugins\zPortapapeles\__init__.py:339
 msgid ""
 "Teclas predefinidas del portapapeles (cambiar solo en distribuciones de "
 "portapapeles distinto)"
 msgstr "Varsayılan pano tuşları (yalnızca farklı pano düzenlerinde değişir)"
 
 #. Translators: Titulo del panel del complemento en el dialogo de opciones de NVDA
-#: addon\globalPlugins\zPortapapeles\__init__.py:348
-msgid "Opciones de zPortapapeles"
-msgstr "zPano Seçenekleri"
-
-#. Translators: Descripción para el checkbox de opciones
 #: addon\globalPlugins\zPortapapeles\__init__.py:355
+msgid "Opciones de zPortapapeles"
+msgstr "ZPano Seçenekleri"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:362
 msgid "Activar o desactivar anuncios hablados del portapapeles"
-msgstr "Pano için mesajları bildir."
+msgstr "Pano için mesajları bildir"
 
 #. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:358
-msgid "Activar o desactivar sonidos del portapapeles"
-msgstr "Pano işlemlerinde ses çal."
-
-#. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:361
-msgid "Activar o desactivar el historial del portapapeles"
-msgstr "Pano geçmişini aç."
-
-#. Translators: Descripción de la etiqueta del choice de opciones
 #: addon\globalPlugins\zPortapapeles\__init__.py:365
-msgid "Elija un tiempo para actualizar el monitor del portapapeles"
-msgstr "Pano monitörünü yenilemek için bir zaman seçin:"
+msgid "Activar o desactivar sonidos del portapapeles"
+msgstr "Pano işlemlerinde ses çal"
 
 #. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:367
-msgid "Notificar con un sonido cada vez que se agregue algo al historial"
-msgstr "Geçmişe bir şey eklendiğinde Ses çal."
-
-#. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:370
-msgid "Hablar lo copiado al portapapeles y agregado al Historial"
-msgstr "Panoya kopyalananları ve Geçmiş'e eklenenleri bildir."
+#: addon\globalPlugins\zPortapapeles\__init__.py:368
+msgid "Activar o desactivar el historial del portapapeles"
+msgstr "Pano geçmişini aç"
 
 #. Translators: Descripción de la etiqueta del choice de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:388
-#| msgid "Elija un tiempo para actualizar el monitor del portapapeles"
+#: addon\globalPlugins\zPortapapeles\__init__.py:372
+msgid "Elija un tiempo para actualizar el monitor del portapapeles"
+msgstr "Pano monitörünü yenilemek için bir zaman seçin"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:374
+msgid "Notificar con un sonido cada vez que se agregue algo al historial"
+msgstr "Geçmişe bir şey eklendiğinde Ses çal"
+
+#. Translators: Descripción para el checkbox de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:377
+msgid "Hablar lo copiado al portapapeles y agregado al Historial"
+msgstr "Panoya kopyalananları ve Geçmiş'e eklenenleri bildir"
+
+#. Translators: Descripción de la etiqueta del choice de opciones
+#: addon\globalPlugins\zPortapapeles\__init__.py:395
 msgid ""
 "Elija un tiempo para actualizar el monitor del portapapeles para el modo "
 "juego"
 msgstr "Oyun modunda pano monitörünü yenilemek için bir zaman seçin"
 
 #. Translators: Descripción de la etiqueta del choice de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:390
+#: addon\globalPlugins\zPortapapeles\__init__.py:397
 msgid "Elija un idioma destino para la traducción en modo juego"
 msgstr "Oyun modunda çeviri için bir hedef dil seçin"
 
 #. Translators: Titulo de la ventana de dialogo del Historial
-#: addon\globalPlugins\zPortapapeles\__init__.py:473
+#: addon\globalPlugins\zPortapapeles\__init__.py:480
 msgid "Historial del Portapapeles"
 msgstr "Pano Geçmişi"
 
 #. Translators: Etiqueta para el listbox con atajo de tecla Alt+H
-#: addon\globalPlugins\zPortapapeles\__init__.py:482
+#: addon\globalPlugins\zPortapapeles\__init__.py:489
 msgid "&Historial:"
 msgstr "&Geçmiş:"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+B
-#: addon\globalPlugins\zPortapapeles\__init__.py:493
+#: addon\globalPlugins\zPortapapeles\__init__.py:500
 msgid "&Borrar"
 msgstr "&Sil"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+T
-#: addon\globalPlugins\zPortapapeles\__init__.py:497
+#: addon\globalPlugins\zPortapapeles\__init__.py:504
 msgid "Borrar &todo"
 msgstr "&Tümünü Sil"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+R
-#: addon\globalPlugins\zPortapapeles\__init__.py:501
+#: addon\globalPlugins\zPortapapeles\__init__.py:508
 msgid "&Refrescar"
 msgstr "&Yenile"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+C
-#: addon\globalPlugins\zPortapapeles\__init__.py:505
+#: addon\globalPlugins\zPortapapeles\__init__.py:512
 msgid "&Cerrar"
 msgstr "&Kapat"
 
 #. Translators: Mensaje informativo de pegado al foco
-#: addon\globalPlugins\zPortapapeles\__init__.py:591
+#: addon\globalPlugins\zPortapapeles\__init__.py:598
 msgid "Pegado al foco."
 msgstr "Odaklanmış."
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:650
+#| msgid "No hay nada en el historial de zPortapapeles."
+msgid "No hay texto en el portapapeles"
+msgstr "Panoda metin yok"
 
 #. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
 #: addon\globalPlugins\zPortapapeles\ajustes.py:12
@@ -250,7 +254,7 @@ msgstr "Yapıştır"
 #: addon\globalPlugins\zPortapapeles\ajustes.py:22
 #: addon\globalPlugins\zPortapapeles\ajustes.py:32
 msgid "Rehacer"
-msgstr "yinele"
+msgstr "Yinele"
 
 #. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
 #: addon\globalPlugins\zPortapapeles\ajustes.py:24
@@ -311,11 +315,11 @@ msgstr "Fransızca"
 
 #: addon\globalPlugins\zPortapapeles\ajustes.py:61
 msgid "Inglés"
-msgstr "ingilizce"
+msgstr "İngilizce"
 
 #: addon\globalPlugins\zPortapapeles\ajustes.py:61
 msgid "Italiano"
-msgstr "italyanca"
+msgstr "İtalyanca"
 
 #: addon\globalPlugins\zPortapapeles\ajustes.py:61
 msgid "Polaco"

@@ -17,6 +17,7 @@ import config
 import textInfos
 from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
 from gui import guiHelper, nvdaControls
+from gui.nvdaControls import CustomCheckListBox
 import speech
 import watchdog
 import core
@@ -30,6 +31,8 @@ import nvwave
 import wx
 from threading import Thread
 import os
+import string
+import re
 from . import ajustes
 from . import portapapeles as pt
 
@@ -39,7 +42,6 @@ def disableInSecureMode(decoratedCls):
 	if globalVars.appArgs.secure:
 		return globalPluginHandler.GlobalPlugin
 	return decoratedCls
-
 
 @disableInSecureMode
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
@@ -104,7 +106,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			nvwave.playWaveFile(fichero)
 		return
 
-	def textSpy(self, obj):
+	def textSpy(self, obj, opcion=0):
 		# Inicio código obtenido de Buscador de definiciones de la RAE (DLEChecker) de Antonio Cascales
 		if hasattr(obj.treeInterceptor, 'TextInfo') and not obj.treeInterceptor.passThrough:
 			try:
@@ -116,10 +118,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				return False
 			else:
 				selectedText = info.text
+				if opcion == 1:
+					return selectedText
 #				return True
 		else:
 			try:
 				selectedText = obj.selection.text
+				if opcion == 1:
+					return selectedText
 #				return True
 			except (RuntimeError, NotImplementedError):
 				return False
@@ -128,8 +134,23 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if selectedText == "":
 			return False
 		else:
-			return True
+			if opcion == 0:
+				return True
+			else:
+				return selectedText
 		# Fin código obtenido de Buscador de definiciones de la RAE (DLEChecker) de Antonio Cascales
+
+	def kill_simbols(self, texto):
+		simbolos = string.punctuation + "¿¡"
+		return re.sub('['+simbolos+']', "", texto).split()
+
+	def contadorTexto(self, texto):
+		caracteres = re.findall(r'[^\s]', texto)
+		espacios = re.findall(r'[ ^\s]', texto)
+		palabras = re.findall(r'\b\w+', texto)
+		lineas = len(texto.splitlines())
+		parrafos = [e for e in texto.strip().splitlines() if e.strip() == '']
+		return [len(caracteres), len(espacios), len(palabras), lineas, [0 if len(parrafos)== 0 else len(parrafos) + 1]]
 
 	def script_gestos(self,gesture):
 		# Función que simulara la tecla pulsada y actuara ofreciendo la información que el usuario eligiese en opciones
@@ -243,7 +264,7 @@ _("""No hay nada en el historial de zPortapapeles.""")
 					else:
 						# Translators: Mensaje informativo el cual le dice al usuario que no es posible abrir 2 ventanas del historial a la vez
 						msg = \
-_("""Ya hay una ventana del historial abierta.
+_("""Ya hay una ventana del historial o de copia de texto abierta.
 
 No es posible tener dos ventanas a la vez.""")
 						ui.message(msg)
@@ -286,7 +307,7 @@ Desactívelo para usar esta opción.""")
 
 		if ajustes.winOn:
 			msg = \
-_("""Tiene una ventana de historial abierta.
+_("""Tiene una ventana de historial o de copia de texto abierta.
 
 Para ejecutar el modo juego ciérrela primero.""")
 			ui.message(msg)
@@ -334,6 +355,51 @@ Para ejecutar el modo juego ciérrela primero.""")
 		category= _("zPortapapeles"))
 	def script_readClipboard(self, event):
 		HiloComplemento(2)
+
+	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+	@scriptHandler.script(gesture=None, description= _("Estadísticas del texto seleccionado"),
+		# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
+		category= _("zPortapapeles"))
+	def script_lenTexto(self, event):
+		HiloComplemento(4, self)
+
+	@scriptHandler.script(gesture=None, description= _("Ejecuta el dialogo para copiar al portapapeles parte de un texto seleccionado"),
+		# Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
+		category= _("zPortapapeles"))
+	def script_bloqueClipboard(self, event):
+		if ajustes.isGame:
+			msg = \
+_("""El modo juego esta activado.
+
+Desactívelo para usar esta opción.""")
+			ui.message(msg)
+		else:
+			if ajustes.winOn == False:
+				obj = api.getFocusObject()
+				if not obj:
+					return 
+
+				if obj.windowClassName == 'ConsoleWindowClass':
+					return
+
+				z = self.textSpy(obj, 1)
+				if z == False:
+					ui.message(_("Sin selección"))
+					return
+				else:
+					lista = self.kill_simbols(z)
+					if len(lista) == 1:
+						ui.message(_("Solo tiene un elemento seleccionado, esta opción necesita más de un elemento para usarse"))
+						return
+					else:
+						HiloComplemento(3, lista)
+			else:
+				# Translators: Mensaje informativo el cual le dice al usuario que no es posible abrir 2 ventanas del historial a la vez
+				msg = \
+_("""Ya hay una ventana del historial o de copia de texto abierta.
+
+No es posible tener dos ventanas a la vez.""")
+				ui.message(msg)
 
 	# Translators: Descripción para el dialogo de Gestos de entrada de NVDA
 	script_gestos.__doc__ = _("Teclas predefinidas del portapapeles (cambiar solo en distribuciones de portapapeles distinto)")
@@ -627,12 +693,99 @@ class HistorialDialogo(wx.Dialog):
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
+class ParteTextoDialogo(wx.Dialog):
+	def _calculatePosition(self, width, height):
+		w = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_X)
+		h = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_Y)
+		# Centre of the screen
+		x = w / 2
+		y = h / 2
+		# Minus application offset
+		x -= (width / 2)
+		y -= (height / 2)
+		return (x, y)
+
+	def __init__(self, parent, datos):
+
+		WIDTH = 800
+		HEIGHT = 600
+		pos = self._calculatePosition(WIDTH, HEIGHT)
+
+		# Translators: Titulo de la ventana de dialogo del Historial
+		super(ParteTextoDialogo, self).__init__(parent, -1, title=_("Selector de trozos de texto para copiar al portapapeles"),pos = pos, size = (WIDTH, HEIGHT))
+
+		ajustes.winOn = True
+		self.listaTemporal = datos
+
+		self.panel_1 = wx.Panel(self, wx.ID_ANY)
+
+		sizer_1 = wx.BoxSizer(wx.VERTICAL)
+
+		label_1 = wx.StaticText(self.panel_1, wx.ID_ANY, _("&Texto para seleccionar:"))
+		sizer_1.Add(label_1, 0, wx.EXPAND, 0)
+
+		self.listboxPalabras = CustomCheckListBox(self.panel_1, wx.ID_ANY, choices=self.listaTemporal)
+		self.listboxPalabras.SetSelection(0)
+		sizer_1.Add(self.listboxPalabras, 1, wx.EXPAND, 0)
+
+		sizer_2 = wx.BoxSizer(wx.HORIZONTAL)
+		sizer_1.Add(sizer_2, 1, wx.EXPAND, 0)
+
+		self.copiarBTN = wx.Button(self.panel_1, 101, _("&Copiar al portapapeles lo seleccionado\n"))
+		sizer_2.Add(self.copiarBTN, 2, wx.EXPAND, 0)
+
+		self.cerrarBTN = wx.Button(self.panel_1, wx.ID_CANCEL, _("Cerrar"))
+		sizer_2.Add(self.cerrarBTN, 2, wx.EXPAND, 0)
+
+		self.panel_1.SetSizer(sizer_1)
+
+		self.Layout()
+		self.cargaEventos()
+
+	def cargaEventos(self):
+		# Función para tener todas las definiciones juntas
+		self.Bind(wx.EVT_BUTTON,self.onBotones)
+		self.Bind(wx.EVT_BUTTON, self.onSalir, id=wx.ID_CANCEL)
+		self.Bind(wx.EVT_CLOSE, self.onSalir)
+		self.Bind(wx.EVT_CHAR_HOOK, self.OnKeyEvent)
+
+	def onBotones(self, event):
+		id = event.GetId()
+		if id == 101:
+			seleccion = [i for i in range(self.listboxPalabras.GetCount()) if self.listboxPalabras.IsChecked(i)]
+			if len(seleccion) == 0:
+				msg = \
+_("""No tiene seleccionada ninguna palabra.
+
+Seleccione al menos una para copiar al portapapeles.""")
+				gui.messageBox(msg, _("Información"), wx.ICON_INFORMATION)
+				self.listboxPalabras.SetFocus()
+				return
+			else:
+				pt.put(" ".join([x for x in [self.listaTemporal[i] for i in seleccion]]))
+				self.onSalir(None)
+
+	def OnKeyEvent(self, event):
+		# Función de control del teclado
+		if event.GetUnicodeKey() == wx.WXK_ESCAPE:
+			self.onSalir(None)
+		else:
+			event.Skip()
+
+	def onSalir(self, event):
+		# Función para cerrar correctamente el dialogo del texto a trozos
+		ajustes.winOn = False
+		self.Destroy()
+		gui.mainFrame.postPopup()
+
 class HiloComplemento(Thread):
 #Clase que manejara la visualización del dialogo del historial en un hilo separado de NVDA
-	def __init__(self, opcion):
+	def __init__(self, opcion, datos=None):
 		super(HiloComplemento, self).__init__()
 
 		self.opcion = opcion
+		self.datos = datos
+
 		self.daemon = True
 		self.start()
 
@@ -648,7 +801,45 @@ class HiloComplemento(Thread):
 				ui.message(get)
 			else:
 				ui.message(_("No hay texto en el portapapeles"))
+
+		def textoTrozos():
+			self._MainWindows = ParteTextoDialogo(gui.mainFrame, self.datos)
+			gui.mainFrame.prePopup()
+			self._MainWindows.Show()
+
+		def textoContar():
+			obj = api.getFocusObject()
+			if not obj:
+				return 
+
+			if obj.windowClassName == 'ConsoleWindowClass':
+				return
+
+			z = self.datos.textSpy(obj, 1)
+			if z == False:
+				ui.message(_("Sin selección"))
+				return
+			else:
+				x = self.datos.contadorTexto(z)
+				msg = \
+_("""{} Caracteres (sin espacios).
+{} Caracteres (con espacios).
+{} {}.
+{} {}.
+{} {}.""").format(
+	x[0],
+	x[0] + x[1],
+	x[2], [_("Palabra") if x[2] <= 1 else _("Palabras")],
+	x[3], [_("Línea") if x[3] <= 1 else _("Líneas")],
+	x[4], [_("Párrafos") if x[4] == 0 else [_("Párrafo") if x[4] == 1 else _("Párrafos")]],
+	)
+				ui.message(msg)
+
 		if self.opcion == 1:
 			wx.CallAfter(HistorialDLG)
 		elif self.opcion == 2:
 			wx.CallAfter(lectorPortapapeles)
+		elif self.opcion == 3:
+			wx.CallAfter(textoTrozos)
+		elif self.opcion == 4:
+			wx.CallAfter(textoContar)

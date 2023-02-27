@@ -53,8 +53,18 @@ zPano geçmişini kullanırsak, Windows pano geçmişinde yinelenen girişler ol
 * Portekizce Brezilya: pedro-hdias
 * Rusça: Valentin Kupriyanov
 * Türkçe: Umut KORKMAZ
+* İtalyanca: Alessio Lenzi
+* Fransızca: Rémy Ruiz
+* Arapça: Wafiq Taher
 
 # Sürüm Geçmişi:
+## Sürüm 0.4.2:
+
+* 1024 karakterden uzun panolar dahil pano içeriğini okuma özelliği eklendi.
+
+## Sürüm 0.4.1:
+
+* Oyun modu yenileme süresini kaydetme sorunu düzeltildi.
 
 ## Sürüm 0.4.
 

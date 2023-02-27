@@ -63,6 +63,58 @@ El historial de portapapeles de Windows puede tener entradas duplicadas si usamo
 * Árabe: Wafiq Taher
 
 # Registro de cambios.
+## Versión 0.5.
+
+* Agregadas  estadísticas del texto seleccionado
+
+Para usar esta característica tendremos que asignar un gesto en el Gestor de entradas de NVDA en la categoría zPortapapeles y Estadísticas del texto seleccionado.
+
+Cuando tengamos un texto seleccionado si pulsamos la combinación que hayamos asignado nos informara de:
+
+- Caracteres sin espacios de la selección.
+- Caracteres con espacios de la selección.
+- Número de palabras.
+- Número de líneas.
+- Número de párrafos.
+
+* Agregada la posibilidad de copiar partes de un texto seleccionado.
+
+Para poder usar esta función tendremos que agregarle un gesto en el gestor de entradas.
+
+Tendremos que ir a la categoría zPortapapeles y agregar el gesto que deseemos a la opción Ejecuta el dialogo para copiar al portapapeles parte de un texto seleccionado.
+
+Bien cuando tengamos un texto seleccionado y lancemos esta opción se abrirá una ventana con una lista que contendrá todas las palabras del texto seleccionado.
+
+Dicha lista tiene casillas de selección por lo que tendremos que seleccionar aquellas palabras que deseemos para copiar al portapapeles.
+
+El texto que recibe este dialogo esta limpio de símbolos de puntuación por lo que tendremos que tener cuidado si alguna palabra viniera con puntuación por ejemplo esto hay que tener cuidado si seleccionamos un texto de programación y viene algo así:
+
+		if event.GetUnicodeKey()
+
+event.GetUnicodeKey() se mostrara en la lista así:
+
+eventGetUnicodeKey habiendo quitado el punto y los paréntesis.
+
+Esta opción principalmente esta enfocada a texto simple, pero si se solicita puedo agregar una opción que muestre el texto con símbolos de puntuación.
+
+El dialogo no podrá ser abierto si ya tenemos un dialogo de historial abierto y viceversa.
+
+El texto que se copia al portapapeles es en orden de la selección original indiferentemente en que orden hayamos elegido los elementos en el dialogo.
+
+Por ejemplo, la frase:
+
+Hola, como estás, el perro tiene hambre
+
+Si deseamos seleccionar Hola, perro y hambre da igual que seleccionemos primero, si marcamos las tres se copiará al portapapeles indiferentemente del orden que lo hayamos seleccionado, siendo lo siguiente lo que se copiará al portapapeles:
+
+Hola perro hambre
+
+Este dialogo necesita por lo menos una selección de dos palabras para ser llamado.
+
+Una vez en el dialogo es necesario al menos tener una palabra seleccionada para copiar al portapapeles.
+
+* Añadida compatibilidad con NVDA 2023.1
+
 ## Versión 0.4.2.
 
 * Agregado la posibilidad de leer el contenido de portapapeles incluido portapapeles de más de 1024 caracteres.
