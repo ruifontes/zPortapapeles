@@ -63,6 +63,10 @@ El historial de portapapeles de Windows puede tener entradas duplicadas si usamo
 * Árabe: Wafiq Taher
 
 # Registro de cambios.
+## Versión 0.5.1.
+
+* Actualizado idioma turco.
+
 ## Versión 0.5.
 
 * Agregadas  estadísticas del texto seleccionado
