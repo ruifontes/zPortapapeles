@@ -7,27 +7,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'zPortapapeles' '0.4.1'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2022-09-16 18:58+0300\n"
-"PO-Revision-Date: 2022-09-16 19:01+0300\n"
-"Last-Translator: Ukrainian NVDA Community <vp88.mobile@gmail.com>\n"
+"POT-Creation-Date: 2023-03-12 13:09+0200\n"
+"PO-Revision-Date: 2023-03-12 15:12+0200\n"
+"Last-Translator: Heorhii <nvda.translation.uk@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
 #. to be shown on installation and add-on information found in Add-ons Manager.
 #. Translators: Nombre para la categoría en el dialogo Gestos de entrada de NVDA
-#: buildVars.py:23 addon\globalPlugins\zPortapapeles\__init__.py:224
-#: addon\globalPlugins\zPortapapeles\__init__.py:261
-#: addon\globalPlugins\zPortapapeles\__init__.py:284
-#: addon\globalPlugins\zPortapapeles\__init__.py:334
-#: addon\globalPlugins\zPortapapeles\__init__.py:341
+#: buildVars.py:23 addon\globalPlugins\zPortapapeles\__init__.py:245
+#: addon\globalPlugins\zPortapapeles\__init__.py:282
+#: addon\globalPlugins\zPortapapeles\__init__.py:305
+#: addon\globalPlugins\zPortapapeles\__init__.py:355
+#: addon\globalPlugins\zPortapapeles\__init__.py:362
+#: addon\globalPlugins\zPortapapeles\__init__.py:368
+#: addon\globalPlugins\zPortapapeles\__init__.py:407
 msgid "zPortapapeles"
 msgstr "буфер обміну"
 
@@ -38,26 +40,29 @@ msgid "Utilidades para el portapapeles, anuncio de las teclas e historial."
 msgstr "Утиліти для буфера обміну, важливих повідомлень та історії."
 
 #. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
-#: addon\globalPlugins\zPortapapeles\__init__.py:165
-#: addon\globalPlugins\zPortapapeles\__init__.py:198
+#: addon\globalPlugins\zPortapapeles\__init__.py:186
+#: addon\globalPlugins\zPortapapeles\__init__.py:219
 #: addon\globalPlugins\zPortapapeles\ajustes.py:18
 #: addon\globalPlugins\zPortapapeles\ajustes.py:28
 msgid "Copiar"
 msgstr "Скопійовано"
 
 #. Sin nada seleccionado
-#: addon\globalPlugins\zPortapapeles\__init__.py:174
-#: addon\globalPlugins\zPortapapeles\__init__.py:205
+#: addon\globalPlugins\zPortapapeles\__init__.py:195
+#: addon\globalPlugins\zPortapapeles\__init__.py:226
+#: addon\globalPlugins\zPortapapeles\__init__.py:387
+#: addon\globalPlugins\zPortapapeles\__init__.py:820
 msgid "Sin selección"
 msgstr "Нічого не вибрано"
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
-#: addon\globalPlugins\zPortapapeles\__init__.py:222
+#: addon\globalPlugins\zPortapapeles\__init__.py:243
 msgid "Muestra la ventana de historial del portapapeles"
 msgstr "Показати діалог історії буфера обміну"
 
-#: addon\globalPlugins\zPortapapeles\__init__.py:229
-#: addon\globalPlugins\zPortapapeles\__init__.py:265
+#: addon\globalPlugins\zPortapapeles\__init__.py:250
+#: addon\globalPlugins\zPortapapeles\__init__.py:286
+#: addon\globalPlugins\zPortapapeles\__init__.py:372
 msgid ""
 "El modo juego esta activado.\n"
 "\n"
@@ -68,14 +73,20 @@ msgstr ""
 "Вимкніть його, щоб використовувати цей параметр."
 
 #. Translators: Mensaje informativo de que el historial se encuentra vacío
-#: addon\globalPlugins\zPortapapeles\__init__.py:238
+#: addon\globalPlugins\zPortapapeles\__init__.py:259
 msgid "No hay nada en el historial de zPortapapeles."
 msgstr "В історії буфера обміну нічого немає."
 
 #. Translators: Mensaje informativo el cual le dice al usuario que no es posible abrir 2 ventanas del historial a la vez
-#: addon\globalPlugins\zPortapapeles\__init__.py:246
+#: addon\globalPlugins\zPortapapeles\__init__.py:267
+#: addon\globalPlugins\zPortapapeles\__init__.py:399
+#, fuzzy
+#| msgid ""
+#| "Ya hay una ventana del historial abierta.\n"
+#| "\n"
+#| "No es posible tener dos ventanas a la vez."
 msgid ""
-"Ya hay una ventana del historial abierta.\n"
+"Ya hay una ventana del historial o de copia de texto abierta.\n"
 "\n"
 "No es posible tener dos ventanas a la vez."
 msgstr ""
@@ -84,7 +95,7 @@ msgstr ""
 "Неможливо мати два діалоги одночасно."
 
 #. Translators: Mensaje informativo que le indica al usuario que el historial no esta activado y como proceder si desea usarlo
-#: addon\globalPlugins\zPortapapeles\__init__.py:253
+#: addon\globalPlugins\zPortapapeles\__init__.py:274
 msgid ""
 "El historial del portapapeles no está activado.\n"
 "\n"
@@ -97,26 +108,31 @@ msgstr ""
 "категорії налаштувань «Буфер обміну»."
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
-#: addon\globalPlugins\zPortapapeles\__init__.py:259
+#: addon\globalPlugins\zPortapapeles\__init__.py:280
 msgid "Activar o desactivar las propiedades de zPortapapeles"
 msgstr "Увімкнути або вимкнути властивості буфера обміну"
 
-#: addon\globalPlugins\zPortapapeles\__init__.py:273
+#: addon\globalPlugins\zPortapapeles\__init__.py:294
 msgid "zPortapapeles desactivado"
 msgstr "буфер обміну вимкнено"
 
-#: addon\globalPlugins\zPortapapeles\__init__.py:278
+#: addon\globalPlugins\zPortapapeles\__init__.py:299
 msgid "zPortapapeles activado"
 msgstr "буфер обміну увімкнено"
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
-#: addon\globalPlugins\zPortapapeles\__init__.py:282
+#: addon\globalPlugins\zPortapapeles\__init__.py:303
 msgid "Activar o desactivar modo juego"
 msgstr "Увімкнути або вимкнути ігровий режим"
 
-#: addon\globalPlugins\zPortapapeles\__init__.py:289
+#: addon\globalPlugins\zPortapapeles\__init__.py:310
+#, fuzzy
+#| msgid ""
+#| "Tiene una ventana de historial abierta.\n"
+#| "\n"
+#| "Para ejecutar el modo juego ciérrela primero."
 msgid ""
-"Tiene una ventana de historial abierta.\n"
+"Tiene una ventana de historial o de copia de texto abierta.\n"
 "\n"
 "Para ejecutar el modo juego ciérrela primero."
 msgstr ""
@@ -124,21 +140,40 @@ msgstr ""
 "\n"
 "Щоб запустити ігровий режим, спочатку закрийте його."
 
-#: addon\globalPlugins\zPortapapeles\__init__.py:311
+#: addon\globalPlugins\zPortapapeles\__init__.py:332
 msgid "Modo juego de zPortapapeles desactivado"
 msgstr "Ігровий режим буфера обміну вимкнено"
 
-#: addon\globalPlugins\zPortapapeles\__init__.py:328
+#: addon\globalPlugins\zPortapapeles\__init__.py:349
 msgid "Modo juego de zPortapapeles activado"
 msgstr "Ігровий режим буфера обміну увімкнено"
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
-#: addon\globalPlugins\zPortapapeles\__init__.py:332
+#: addon\globalPlugins\zPortapapeles\__init__.py:353
 msgid "Leer portapapeles"
 msgstr "Читати буфер обміну"
 
 #. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
-#: addon\globalPlugins\zPortapapeles\__init__.py:339
+#: addon\globalPlugins\zPortapapeles\__init__.py:360
+msgid "Estadísticas del texto seleccionado"
+msgstr "Статистика виділеного тексту"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:366
+msgid ""
+"Ejecuta el dialogo para copiar al portapapeles parte de un texto seleccionado"
+msgstr ""
+"Відкриває діалог для копіювання до буфера обміну частини виділеного тексту"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:392
+msgid ""
+"Solo tiene un elemento seleccionado, esta opción necesita más de un elemento "
+"para usarse"
+msgstr ""
+"Ви вибрали лише один елемент, для цього параметра потрібно використовувати "
+"більше одного елемента"
+
+#. Translators: Descripción para el dialogo de Gestos de entrada de NVDA
+#: addon\globalPlugins\zPortapapeles\__init__.py:405
 msgid ""
 "Teclas predefinidas del portapapeles (cambiar solo en distribuciones de "
 "portapapeles distinto)"
@@ -147,90 +182,159 @@ msgstr ""
 "розкладках буфера обміну)"
 
 #. Translators: Titulo del panel del complemento en el dialogo de opciones de NVDA
-#: addon\globalPlugins\zPortapapeles\__init__.py:355
+#: addon\globalPlugins\zPortapapeles\__init__.py:421
 msgid "Opciones de zPortapapeles"
 msgstr "Параметри буфера обміну"
 
 #. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:362
+#: addon\globalPlugins\zPortapapeles\__init__.py:428
 msgid "Activar o desactivar anuncios hablados del portapapeles"
 msgstr "Увімкнути або вимкнути голосові підказки буфера обміну"
 
 #. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:365
+#: addon\globalPlugins\zPortapapeles\__init__.py:431
 msgid "Activar o desactivar sonidos del portapapeles"
 msgstr "Увімкнути або вимкнути звуки буфера обміну"
 
 #. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:368
+#: addon\globalPlugins\zPortapapeles\__init__.py:434
 msgid "Activar o desactivar el historial del portapapeles"
 msgstr "Увімкнути або вимкнути історію буфера обміну"
 
 #. Translators: Descripción de la etiqueta del choice de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:372
+#: addon\globalPlugins\zPortapapeles\__init__.py:438
 msgid "Elija un tiempo para actualizar el monitor del portapapeles"
 msgstr "Виберіть час для оновлення монітора буфера обміну"
 
 #. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:374
+#: addon\globalPlugins\zPortapapeles\__init__.py:440
 msgid "Notificar con un sonido cada vez que se agregue algo al historial"
 msgstr "Сповіщати звуком щоразу, коли щось додається до історії"
 
 #. Translators: Descripción para el checkbox de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:377
+#: addon\globalPlugins\zPortapapeles\__init__.py:443
 msgid "Hablar lo copiado al portapapeles y agregado al Historial"
 msgstr "Озвучити те, що було скопійовано в буфер обміну та додано до історії"
 
 #. Translators: Descripción de la etiqueta del choice de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:395
+#: addon\globalPlugins\zPortapapeles\__init__.py:461
 msgid ""
 "Elija un tiempo para actualizar el monitor del portapapeles para el modo "
 "juego"
 msgstr "Виберіть час оновлення монітора буфера обміну для ігрового режиму"
 
 #. Translators: Descripción de la etiqueta del choice de opciones
-#: addon\globalPlugins\zPortapapeles\__init__.py:397
+#: addon\globalPlugins\zPortapapeles\__init__.py:463
 msgid "Elija un idioma destino para la traducción en modo juego"
 msgstr "Виберіть мову перекладу в ігровому режимі"
 
 #. Translators: Titulo de la ventana de dialogo del Historial
-#: addon\globalPlugins\zPortapapeles\__init__.py:480
+#: addon\globalPlugins\zPortapapeles\__init__.py:546
 msgid "Historial del Portapapeles"
 msgstr "Історія буфера обміну"
 
 #. Translators: Etiqueta para el listbox con atajo de tecla Alt+H
-#: addon\globalPlugins\zPortapapeles\__init__.py:489
+#: addon\globalPlugins\zPortapapeles\__init__.py:555
 msgid "&Historial:"
 msgstr "&Історія:"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+B
-#: addon\globalPlugins\zPortapapeles\__init__.py:500
+#: addon\globalPlugins\zPortapapeles\__init__.py:566
 msgid "&Borrar"
 msgstr "&Видалити"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+T
-#: addon\globalPlugins\zPortapapeles\__init__.py:504
+#: addon\globalPlugins\zPortapapeles\__init__.py:570
 msgid "Borrar &todo"
 msgstr "Видалити &все"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+R
-#: addon\globalPlugins\zPortapapeles\__init__.py:508
+#: addon\globalPlugins\zPortapapeles\__init__.py:574
 msgid "&Refrescar"
 msgstr "&Оновити"
 
 #. Translators: Nombre del botón con tecla de atajo Alt+C
-#: addon\globalPlugins\zPortapapeles\__init__.py:512
+#: addon\globalPlugins\zPortapapeles\__init__.py:578
 msgid "&Cerrar"
 msgstr "&Закрити"
 
 #. Translators: Mensaje informativo de pegado al foco
-#: addon\globalPlugins\zPortapapeles\__init__.py:598
+#: addon\globalPlugins\zPortapapeles\__init__.py:664
 msgid "Pegado al foco."
 msgstr "Знаходиться у фокусі."
 
-#: addon\globalPlugins\zPortapapeles\__init__.py:650
+#. Translators: Titulo de la ventana de dialogo del Historial
+#: addon\globalPlugins\zPortapapeles\__init__.py:715
+msgid "Selector de trozos de texto para copiar al portapapeles"
+msgstr "Виділення фрагмента тексту для копіювання в буфер обміну"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:724
+msgid "&Texto para seleccionar:"
+msgstr "&Текст для вибору:"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:734
+msgid "&Copiar al portapapeles lo seleccionado\n"
+msgstr "&Скопіювати вибраний елемент у буфер обміну\n"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:737
+msgid "Cerrar"
+msgstr "Закрити"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:758
+msgid ""
+"No tiene seleccionada ninguna palabra.\n"
+"\n"
+"Seleccione al menos una para copiar al portapapeles."
+msgstr ""
+"Ви не вибрали жодного слова.\n"
+"\n"
+"Виберіть принаймні одне для копіювання в буфер обміну."
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:761
+msgid "Información"
+msgstr "Інформація"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:803
 msgid "No hay texto en el portapapeles"
 msgstr "В буфері обміну немає тексту"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:825
+msgid ""
+"{} Caracteres (sin espacios).\n"
+"{} Caracteres (con espacios).\n"
+"{} {}.\n"
+"{} {}.\n"
+"{} {}."
+msgstr ""
+"{} Символів (без пробілів).\n"
+"{} Символів (з пробілами).\n"
+"{} {}.\n"
+"{} {}.\n"
+"{} {}."
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:832
+msgid "Palabra"
+msgstr "Слово"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:832
+msgid "Palabras"
+msgstr "Слова"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:833
+msgid "Línea"
+msgstr "Рядок"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:833
+msgid "Líneas"
+msgstr "Рядки"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:834
+msgid "Párrafos"
+msgstr "Абзаци"
+
+#: addon\globalPlugins\zPortapapeles\__init__.py:834
+msgid "Párrafo"
+msgstr "Абзац"
 
 #. Translators: Mensaje que informa de la acción de la combinación de tecla pulsada por el usuario
 #: addon\globalPlugins\zPortapapeles\ajustes.py:12
